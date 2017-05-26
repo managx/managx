@@ -36,7 +36,7 @@ class Managx_Admin_Menu {
     }
 
     /**
-     * Display the workflows page.
+     * Display the projects page.
      *
      * @return void
      */

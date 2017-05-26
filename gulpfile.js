@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 var wpPot = require('gulp-wp-pot');
+var concat = require('gulp-concat');
 
 var dirs = {
     css: 'assets/css',
@@ -9,8 +10,12 @@ var dirs = {
 };
 
 gulp.task('less', function() {
-    return gulp.src(dirs.less+'/*.less')
+    return gulp.src([
+            dirs.less+'/bootstrap.less',
+            dirs.less+'/style.less'
+        ])
         .pipe(less())
+        .pipe(concat('style.css'))
         .pipe(gulp.dest(dirs.css))
 });
 

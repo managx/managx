@@ -1,7 +1,7 @@
 {
   "name": "managx",
   "version": "0.0.1",
-  "description": "A WordPress Plugin",
+  "description": "Project Manager Plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,8 @@
   "license": "GPL-2.0",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "gulp-less": "^3.3.0",
-    "gulp-wp-pot": "^2.0.3"
+    "gulp-wp-pot": "^2.0.4"
   }
 }

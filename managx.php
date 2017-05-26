@@ -8,7 +8,7 @@ Author:      managx
 Author URI:  http://www.managx.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: wpc
+Text Domain: managx
 Domain Path: /languages
 */
 
@@ -18,6 +18,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 class ManagX {
+    /**
+     * Plugin version
+     *
+     * @var string
+     */
+    public $version = '0.0.1';
+
     /**
      * Class constructor
      */
@@ -90,7 +97,7 @@ class ManagX {
      *
      * @return void
      */
-    function class_autoload( $class ) {
+    private function class_autoload( $class ) {
         if ( stripos( $class, 'Managx_' ) !== false ) {
 
             $admin = ( stripos( $class, '_Admin_' ) !== false ) ? true : false;
