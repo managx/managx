@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: ManagX - The Fast, Free and the Most Extensible Project and Task Management System
+Plugin Name: ManagX - Project Management Solution That is Not Boring
 Plugin URI:  https://wordpress.org/plugins/managx/
-Description: ManagX has beed designed to offer the fastest and best user experience to everyone.
+Description: A fast and easy project and task management system designed for all kind of users.
 Version:     0.0.1
 Author:      managx
 Author URI:  https://managx.com
