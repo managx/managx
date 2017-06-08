@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: ManagX
+Plugin Name: ManagX - Project Management Solution That is Not Boring
 Plugin URI:  https://wordpress.org/plugins/managx/
-Description: Project Manager Plugin
+Description: A fast and easy project and task management system designed for all kind of users.
 Version:     0.0.1
 Author:      managx
-Author URI:  http://www.managx.com
+Author URI:  https://managx.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: managx
