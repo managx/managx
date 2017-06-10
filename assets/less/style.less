@@ -1,0 +1,142 @@
+.header-portion{
+	background-color: #fff;
+	.main-menu{
+		list-style-type: none;
+		li{
+			float: left;
+			width: 70px;
+			padding: 20px 5px;
+			margin-right: 20px;
+			a{
+				color: #a4a4a4;
+				padding: 20px 5px;
+			}
+			a:hover{
+				text-decoration: none;
+				background-color: #afafaf;
+				color: #fff;
+			}
+		}
+		li.active{
+			a{
+				color: #00b8a9;
+				border-bottom: 2px solid #00b8a9;
+			}
+		}
+	}
+	.txt-search{
+		border: 1px solid #afafaf;
+	}
+}
+.main-body{
+	background-color: #ededed;
+	float: left;
+	width: 100%;
+	.button-filter-container{
+		float: left;
+		width: 100%;
+		button{
+			background-color: #00b8a9;
+			color: #fff;
+			border: none;
+			padding: 10px 35px;
+			border-radius: 0;
+		}
+		.sort-filter-container{
+			.sort-container{
+				width: 65%;
+			}
+			span{
+				float: left;
+				font-size: 12px;
+			}
+			.sort-filter{
+				list-style-type: none;
+				font-size: 12px;
+				li{
+					float: left;
+					border-left: 1px solid #afafaf;
+					margin-left: 10px;
+					padding-left: 10px;
+				}
+				li:first-child{
+					border-left: none;
+				}
+			}
+		}
+	}
+	.project-list-container{
+		width: 100%;
+		.projects-column{
+			background-color: #fff;
+		    width: 31%;
+		    .project-title{
+		    	font-size: 19px;
+		    }
+		    .update-access-level-container{
+		    	label{
+		    		font-size: 11px;
+		    	}
+		    }
+		    .deadline-time{
+		    	font-size: 11px;
+		    	float: left;
+		    	width: 100%;
+		    }
+		    .assignee{
+		    	font-size: 11px;
+		    }
+		    .assignee-list{
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				li{
+					float: left;
+				}
+		    }
+		    .tags{
+		    	float: left;
+		    	width: 100%;
+		    	ul{
+		    		list-style-type: none;
+		    		margin: 0;
+		    		padding: 0;
+		    		li:first-child{
+						margin-left: 0;
+		    		}
+		    		li{
+		    			float: left;
+		    			margin-left: 10px;
+		    			a{
+		    				color: #fff;
+		    				text-transformation: uppercase;
+		    				background-color: green;
+		    				border-radius: 13px;
+		    				padding: 5px;
+		    			}
+		    			a.red{
+		    				background-color: red;
+		    			}
+		    		}
+		    	}
+		    }
+		}
+	}
+	.completed-archive-project-caption{
+		float: left;
+		width: 100%;
+	}
+	.completed-projects-container{
+		float: left;
+		width: 100%;
+		.completed-projects:first-child{
+			margin-left: 0;
+		}
+		.completed-projects{
+			float: left;
+			width: 31%;
+			background-color: #fff;
+			padding: 5px;
+		}
+	}
+}
