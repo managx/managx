@@ -4,7 +4,7 @@
  * Include a template file
  *
  * Looks up first on the theme directory, if not found
- * lods from plugins folder
+ * loads from plugins folder
  *
  * @param string $file
  */
