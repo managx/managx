@@ -37,6 +37,19 @@ class Managx_Admin_Menu {
         add_submenu_page( 'managx', __( 'All Projects', 'managx' ), __( 'All Projects', 'managx' ), $capabilities, 'managx', array( $this, 'projects_page' ) );
 
         add_action( "load-$menupage", array( $this, 'screen_option' ) );
+
+        /*temporary : for html*/
+
+        /*conversation*/
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Conversation', 'managx') , __( 'Conversation', 'managx'), $capabilities, 'conversation', array( $this, 'conversation_page' ) );
+        /*expense*/
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Expense', 'managx') , __( 'Expense', 'managx'), $capabilities, 'expense', array( $this, 'expense_page' ) );
+        /*individual tasks*/
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Individual Task', 'managx') , __( 'Individual Task', 'managx'), $capabilities, 'individual_task', array( $this, 'individual_task_page' ) );
+        /*project details*/
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Project Details', 'managx') , __( 'Project Details', 'managx'), $capabilities, 'project_details', array( $this, 'project_details_page' ) );
+        /*activity*/
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Activity', 'managx') , __( 'Activity', 'managx'), $capabilities, 'activity', array( $this, 'activity_page' ) );
     }
 
     /**
@@ -48,6 +61,26 @@ class Managx_Admin_Menu {
         managx_load_template('admin/projects.php');
     }
 
+    /*temporary : conversation_page*/
+    public function conversation_page() {
+        managx_load_template('admin/conversation.php');
+    }
+    /*temporary : expense_page*/
+    public function expense_page() {
+        managx_load_template('admin/expense.php');
+    }
+    /*temporary : individual_task_page*/
+    public function individual_task_page() {
+        managx_load_template('admin/individual_task.php');
+    }
+    /*temporary : project_details_page*/
+    public function project_details_page() {
+        managx_load_template('admin/project_details.php');
+    }
+    /*temporary : activity_page*/
+    public function activity_page() {
+        managx_load_template('admin/activity.php');
+    }
     /**
      * Screen options.
      *
