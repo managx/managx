@@ -69,7 +69,110 @@ class ManagX {
             }
         }
 
-        $table_schema = array();
+        $table_schema = array(
+            "CREATE TABLE `{$wpdb->prefix}managx_projects` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `name` tinytext NOT NULL,
+                `description` longtext NOT NULL,
+                `create_by` int NOT NULL,
+                `create_date` DATETIME NOT NULL,
+                `project_date` DATE NOT NULL,
+                `status` int NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_project_meta` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `meta_key` varchar(255) NOT NULL,
+                `meta_value` TEXT NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_lists` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `milestone_id` bigint NOT NULL,
+                `name` tinytext NOT NULL,
+                `description` TEXT NOT NULL,
+                `create_date` TIMESTAMP NOT NULL,
+                `create_by` int NOT NULL,
+                `status` int NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_tasks` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `list_id` bigint NOT NULL,
+                `name` tinytext NOT NULL,
+                `description` longtext NOT NULL,
+                `create_date` TIMESTAMP NOT NULL,
+                `create_by` int NOT NULL,
+                `due_date` DATE NOT NULL,
+                `status` int NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_milestones` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `name` tinytext NOT NULL,
+                `description` TEXT NOT NULL,
+                `create_by` int NOT NULL,
+                `create_date` TIMESTAMP NOT NULL,
+                `due_date` DATE NOT NULL,
+                `status` int NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_task_meta` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `task_id` bigint NOT NULL,
+                `meta_key` varchar(255) NOT NULL,
+                `meta_value` TEXT NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_discussions` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `title` tinytext NOT NULL,
+                `description` longtext NOT NULL,
+                `create_by` int NOT NULL,
+                `create_date` TIMESTAMP NOT NULL,
+                `status` int NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_attachment_relation` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `parent_id` int,
+                `discussion_id` bigint NOT NULL,
+                `task_id` bigint NOT NULL,
+                `folder_name` varchar(255) NOT NULL,
+                `wp_attach_id` int NOT NULL,
+                `type` varchar(255) NOT NULL,
+                `create_by` int NOT NULL,
+                `create_date` TIMESTAMP NOT NULL,
+                `status` int NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+
+            "CREATE TABLE `{$wpdb->prefix}managx_comments` (
+                `id` bigint NOT NULL AUTO_INCREMENT,
+                `project_id` bigint NOT NULL,
+                `type` varchar(255) NOT NULL,
+                `title` tinytext NOT NULL,
+                `discription` longtext NOT NULL,
+                `create_by` int NOT NULL,
+                `create_date` TIMESTAMP NOT NULL,
+                `status` int NOT NULL,
+                `object_id` bigint NOT NULL,
+                PRIMARY KEY (`id`)
+            )$collate;",
+        );
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         foreach ( $table_schema as $table ) {
