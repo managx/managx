@@ -25,3 +25,12 @@ function managx_load_template( $file, $args = array() ) {
         include $managx_dir . $file;
     }
 }
+
+/**
+ * Get all localize strings.
+ *
+ * @return array
+ */
+function managx_get_localize_strings() {
+    return include_once MANAGX_PATH . '/i18n/localize-strings.php';
+}

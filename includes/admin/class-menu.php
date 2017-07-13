@@ -36,7 +36,7 @@ class Managx_Admin_Menu {
 
         add_submenu_page( 'managx', __( 'All Projects', 'managx' ), __( 'All Projects', 'managx' ), $capabilities, 'managx', array( $this, 'projects_page' ) );
 
-        add_action( "load-$menupage", array( $this, 'screen_option' ) );
+        // add_action( "load-$menupage", array( $this, 'screen_option' ) );
 
         /*temporary : for html*/
 
@@ -108,11 +108,27 @@ class Managx_Admin_Menu {
      */
     public function admin_enqueue_scripts_styles( $hook ) {
 
-        if ( isset( $this->plugin_page_hooks ) && in_array( $hook, $this->plugin_page_hooks ) ) {
-            wp_enqueue_style('managx-bs-css', MANAGX_ASSETS . '/css/bootstrap.min.css');
-            wp_enqueue_style('managx-admin-style', MANAGX_ASSETS . '/css/style.css');
-            wp_enqueue_style('managx-lato-font', 'https://fonts.googleapis.com/css?family=Lato');
+        $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+        if ( ! isset( $this->plugin_page_hooks ) && ! in_array( $hook, $this->plugin_page_hooks ) ) {
+            return;
         }
+
+        wp_enqueue_style('managx-bs-css', MANAGX_ASSETS . '/css/bootstrap.min.css');
+        wp_enqueue_style('managx-admin-style', MANAGX_ASSETS . '/css/style.css');
+        wp_enqueue_style('managx-lato-font', 'https://fonts.googleapis.com/css?family=Lato');
+
+
+        $i18n = managx_get_localize_strings();
+
+        $localize_vars = array(
+            'i18n' => $i18n,
+        );
+        wp_localize_script( 'managx-scripts', 'managx_localize_vars', $localize_vars );
+
+        wp_enqueue_script( 'managx-vue', MANAGX_ASSETS . '/js/vendor/vue' . $suffix . '.js', array(), MANAGX_VERSION, true );
+        wp_enqueue_script( 'managx-scripts', MANAGX_ASSETS . '/js/managx' . $suffix . '.js', array('managx-vue'), MANAGX_VERSION, true );
+
     }
 
 }

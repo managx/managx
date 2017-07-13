@@ -9,9 +9,16 @@
   "author": "managx",
   "license": "GPL-2.0",
   "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.3.0",
-    "gulp-wp-pot": "^2.0.4"
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-webpack": "^1.5.0",
+    "gulp-wp-pot": "^2.0.4",
+    "webpack": "^3.2.0"
   }
 }

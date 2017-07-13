@@ -9,7 +9,7 @@ Author URI:  https://managx.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: managx
-Domain Path: /languages
+Domain Path: /i18n/languages/
 */
 
 // If this file is called directly, abort.
@@ -18,13 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 class ManagX {
-    /**
-     * Plugin version
-     *
-     * @var string
-     */
-    public $version = '0.0.1';
-
     /**
      * Class constructor
      */
@@ -186,6 +179,7 @@ class ManagX {
      * @return void
      */
     private function define_constants() {
+        define( 'MANAGX_VERSION', '0.0.1' );
         define( 'MANAGX_FILE', __FILE__ );
         define( 'MANAGX_PATH', dirname( MANAGX_FILE ) );
         define( 'MANAGX_INCLUDES', MANAGX_PATH . '/includes' );
