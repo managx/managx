@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/Applications/MAMP/htdocs/managx/wp-content/plugins/managx/assets/js";
+/******/ 	__webpack_require__.p = "/var/www/html/wp-contacts/wp-content/plugins/managx/assets/js";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -46,9 +46,9 @@
 
 	'use strict';
 
-	var _hello = __webpack_require__(1);
+	var _project = __webpack_require__(1);
 
-	var _hello2 = _interopRequireDefault(_hello);
+	var _project2 = _interopRequireDefault(_project);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,10 +60,15 @@
 
 	managx_js_var_extract(managx_localize_vars);
 
-	Vue.component('hello', _hello2.default);
+	Vue.component('project', _project2.default);
 
 	var vm = new Vue({
-	    el: '#managx-app'
+	    el: '#managx-app',
+	    data: function data() {
+	        return {
+	            msg: 'Hello Managx!'
+	        };
+	    }
 	});
 
 /***/ }),
@@ -76,9 +81,10 @@
 	    value: true
 	});
 	exports.default = {
+	    template: '#tmpl-managx-project',
 	    data: function data() {
 	        return {
-	            msg: 'Hello Managx!'
+	            name: 'Hello Managx!'
 	        };
 	    }
 	};

@@ -139,11 +139,8 @@ class Managx_Admin_Menu {
         wp_enqueue_script( 'managx-vue', MANAGX_ASSETS . '/js/vendor/vue' . $suffix . '.js', array(), MANAGX_VERSION, true );
         wp_enqueue_script( 'managx-scripts', MANAGX_ASSETS . '/js/managx' . $suffix . '.js', array( 'managx-vue' ), MANAGX_VERSION, true );
         wp_enqueue_script( 'managx-bs-js', MANAGX_ASSETS . '/js/bootstrap' . $suffix . '.js', array( 'jquery' ), MANAGX_VERSION, true );
-        wp_enqueue_script( 'managx-scripts',MANAGX_ASSETS . '/js/vue-multiselect-2.0.js', array( 'jquery' ), MANAGX_VERSION, true );
-        
-    
+        wp_enqueue_script( 'managx-scripts',MANAGX_ASSETS . '/js/vendor/vue-multiselect.js', array(), MANAGX_VERSION, true );
 
-        
         wp_localize_script( 'managx-scripts', 'managx_localize_vars', $localize_vars );
     }
 
