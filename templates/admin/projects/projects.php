@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <div class="row pt25 pb25">
         <div class="col-sm-6">
-            <a href="" class="btn create_button">Create Project</a>
+            <a href="" class="btn create_button" data-toggle="modal" data-target="#create_project_form">Create Project</a>
         </div>
         <div class="col-sm-6 text-right project-sort-option font2">
             <label>Sort by :</label>
@@ -26,6 +26,15 @@
                 <li><a href="">Deadline</a></li>
             </ul>
         </div>
+
+        <div class="col-md-12 col-sm-12">
+            <div class="col-sm-6"> 
+                <?php
+                managx_load_template( 'admin/projects/project_form.php' );
+                ?>
+            </div>
+        </div>
+
     </div>
     <!--project lists-->
     <div class="row pb25 mr0">
