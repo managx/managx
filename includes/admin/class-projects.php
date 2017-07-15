@@ -10,26 +10,33 @@ class managx_projects {
     }
 
     /**
-     * get list of projects
-     * since v0.0.1
+     * Get list of projects
+     *
+     * @since v0.0.1
+     *
+     * @return void
      */
     function get_projets() {
         
     }
 
     /**
-     * get single project
-     * since v0.0.1
+     * Get single project
      *
-     * @param int $project_id id of project
+     * @since v0.0.1
+     *
+     * @param int $project_id
+     *
+     * @return void
      */
     function get_project( $project_id ) {
         
     }
 
     /**
-     * create project
-     * since v0.0.1
+     * Create project
+     *
+     * @since v0.0.1
      *
      * @return int project id on succes, false on failure
      */
@@ -38,55 +45,67 @@ class managx_projects {
     }
 
     /**
-     * update project
-     * since v0.0.1
+     * Update project
      *
-     * @param int $project_id id of project
-     * @param array $data list data
+     * @since v0.0.1
+     *
+     * @param int $project_id
+     * @param array $data
+     *
+     * @return void
      */
     function update_projct( $project_id, $data ) {
         
     }
 
     /**
-     * update project metadata
-     * since v0.0.1
+     * Update project metadata
+     * @since v0.0.1
      *
      * @param int $project_id project id
      * @param array $meta_data project meta data array
+     *
+     * @return true on success, false on failure
      */
     function update_project_meta( $project_id, $meta_data ) {
         
     }
 
     /**
-     * update project privacy
-     * since v0.0.1
+     * Update project privacy
      *
-     * @param int $project_id project id
+     * @since v0.0.1
+     *
+     * @param int $project_id
      * @param array/string $data
+     *
+     * @return true on success, false on failure
      */
     function update_privacy( $project_id, $data ) {
         
     }
 
     /**
-     * update project status
-     * since v0.0.1
+     * Update project status
      *
-     * @param int $project_id project id
+     * @since v0.0.1
+     *
+     * @param int $project_id
+     *
+     * @return true on success false on failure
      */
     function update_project_status( $project_id ) {
         
     }
 
     /**
-     * delete project 
-     * since v0.0.1
+     * Delete project
      *
-     * @param int $project_id project id
+     * @since v0.0.1
      *
-     * return true on success, false on failure
+     * @param int $project_id
+     *
+     * @return true on success, false on failure
      */
     function delete_project( $project_id ) {
         

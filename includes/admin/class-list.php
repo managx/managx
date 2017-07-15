@@ -10,28 +10,35 @@ class managx_lists {
     }
 
     /**
-     * get list of task list
-     * since v0.0.1
+     * Get list of task list
      *
-     * @param int $project_id project id
+     * @since v0.0.1
+     *
+     * @param int $project_id
+     *
+     * @return void
      */
     function get_lists( $project_id ) {
         
     }
 
     /**
-     * get single list of task
-     * since v0.0.1
+     * Get single list of task
      *
-     * @param int $list_id id of list of task
+     * @since v0.0.1
+     *
+     * @param int $list_id
+     *
+     * @return void
      */
     function get_list( $list_id ) {
         
     }
 
     /**
-     * create list of task
-     * since v1.0
+     * Create list of task
+     *
+     * @since v1.0
      *
      * @return int list id on success, false on failure
      */
@@ -40,21 +47,27 @@ class managx_lists {
     }
 
     /**
-     * update list of task
-     * since v0.0.1
+     * Update list of task
+     *
+     * @since v0.0.1
      *
      * @param int $list_id id of list
      * @param int $data date updated
+     *
+     * @return true on success, false on failure
      */
     function update_list( $list_id, $data ) {
         
     }
 
     /**
-     * delete list of task
-     * since v0.0.1
+     * Delete list of task
+     *
+     * @since v0.0.1
      *
      * @param int $list_id id of list
+     *
+     * @return true on success false on failure
      */
     function delete_list( $list_id ) {
         

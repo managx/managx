@@ -9,28 +9,33 @@ class managx_tasks {
     }
 
     /**
-     * get tasks
-     * since v0.0.1
+     * Get tasks
      *
-     * @param int $list_id list id
+     * @since v0.0.1
+     *
+     * @param int $list_id
+     *
+     * @return void
      */
     function get_tasks( $list_id ) {
         
     }
 
     /**
-     * get single task
-     * since v0.0.1
+     * Get single task
      *
-     * @param int $task_id id of task
+     * @since v0.0.1
+     *
+     * @param int $task_id
      */
     function get_task( $task_id ) {
         
     }
 
     /**
-     * create task
-     * since v0.0.1
+     * Create task
+     *
+     * @since v0.0.1
      *
      * @return int task id on success, false on failure
      */
@@ -39,34 +44,41 @@ class managx_tasks {
     }
 
     /**
-     * update project
-     * since v0.0.1
+     * Update project
+     *
+     * @since v0.0.1
      *
      * @param int $task_id id of task
      * @param array $data task data
+     *
+     * @return true on success false on failure
      */
     function update_task( $task_id, $data ) {
         
     }
 
     /**
-     * update list metadata
-     * since v0.0.1
+     * Update list metadata
+     *
+     * @since v0.0.1
      *
      * @param int $task_id task id
      * @param array $data task meta data array
+     *
+     * @return true on success, false on failure
      */
     function update_task_meta( $task_id, $data ) {
         
     }
 
     /**
-     * delete task
-     * since v0.0.1
+     * Delete task 
+     *
+     * @since v0.0.1
      *
      * @param int $task_id task id
      *
-     * return true on success, false on failure
+     * @return true on success, false on failure
      */
     function delete_task( $task_id ) {
         
