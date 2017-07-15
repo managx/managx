@@ -14,8 +14,8 @@ var dirs = {
 
 gulp.task('less', function() {
     return gulp.src([
-            dirs.less+'/bootstrap.less',
-            dirs.less+'/style.less'
+            dirs.less+'/style.less',
+            dirs.less+'/framework.less'
         ])
         .pipe(less())
         .pipe(concat('style.css'))
