@@ -30,10 +30,9 @@
 
             <div class="col-md-12 col-sm-12">
  
-                <div class="col-sm-6 create_project_form_container" v-if='showCreateForm'> 
+                <div class="col-sm-6 create_project_form_container" v-if='showCreateForm'>
                     <a href="JavaScript:void(0)" @click.prevent="showCreateForm = !showCreateForm" class="btn btn-danger btn-xs mt15 pull-right"><span class="fa fa-times-circle">x</span></a>
-                    <project-form /> 
- 
+                    <project-form />
                 </div>
             </div>
 
