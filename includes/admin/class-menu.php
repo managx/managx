@@ -123,26 +123,19 @@ class Managx_Admin_Menu {
             return;
         }
 
-        //wp_enqueue_style( 'managx-bs-css', MANAGX_ASSETS . '/css/bootstrap.min.css' );
-        wp_enqueue_style( 'managx-bs-css', MANAGX_ASSETS . '/css/managx-bs.css' );
         wp_enqueue_style( 'managx-admin-style', MANAGX_ASSETS . '/css/style.css' );
-        wp_enqueue_style( 'managx-admin-style', MANAGX_ASSETS . '/css/vue-multiselect.min.css' );
+        wp_enqueue_style( 'managx-multiselect', MANAGX_ASSETS . '/css/vue-multiselect.min.css' );
         wp_enqueue_style( 'managx-lato-font', 'https://fonts.googleapis.com/css?family=Lato' );
-
 
         $i18n = managx_get_localize_strings();
 
         $localize_vars = array(
-            'i18n' => $i18n, 
-            'project_home' => home_url().'/wp-admin/admin.php?page=managx', 
+            'i18n' => $i18n,
+            'project_home' => home_url().'/wp-admin/admin.php?page=managx',
         );
-
-        // managx_localize_vars.home_url 
 
         wp_enqueue_script( 'managx-vue', MANAGX_ASSETS . '/js/vendor/vue' . $suffix . '.js', array(), MANAGX_VERSION, true );
         wp_enqueue_script( 'managx-scripts', MANAGX_ASSETS . '/js/managx' . $suffix . '.js', array( 'managx-vue' ), MANAGX_VERSION, true );
-        wp_enqueue_script( 'managx-bs-js', MANAGX_ASSETS . '/js/bootstrap' . $suffix . '.js', array( 'jquery' ), MANAGX_VERSION, true );
-        wp_enqueue_script( 'managx-scripts',MANAGX_ASSETS . '/js/vendor/vue-multiselect.js', array(), MANAGX_VERSION, true );
 
         wp_localize_script( 'managx-scripts', 'managx_localize_vars', $localize_vars );
     }

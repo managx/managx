@@ -6,16 +6,26 @@ function managx_js_var_extract(variable) {
 
 managx_js_var_extract(managx_localize_vars);
 
-// Main Project Components 
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect);
+
+// Main Project Components
 import project from './components/project';
 Vue.component('project', project);
 
+ 
 // Project Form Component 
 import project_form from './components/project-form';
 Vue.component('project-form', project_form);
 
-// All WP User List Component 
-import users_list from './components/users';
+ 
+// Project Form Component
+import project_form from './components/project/project-form';
+Vue.component('project-form', project_form);
+
+// All WP User List Component
+import users_list from './components/project/users';
+ 
 Vue.component('users-list', users_list);
 
 var vm = new Vue({
@@ -26,6 +36,7 @@ var vm = new Vue({
             showCreateForm: false,
             projects: [],
 
+ 
         }
     },
     mounted: {
