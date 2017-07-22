@@ -11,23 +11,19 @@ Vue.component('multiselect', Multiselect);
 
 // Main Project Components
 import project from './components/project';
-Vue.component('project', project);
+Vue.component('project', project); 
 
- 
 // Project Form Component 
 import project_form from './components/project-form';
 Vue.component('project-form', project_form);
 
  
-// Project Form Component
-import project_form from './components/project/project-form';
-Vue.component('project-form', project_form);
-
 // All WP User List Component
-import users_list from './components/project/users';
+import users_list from './components/users';
  
 Vue.component('users-list', users_list);
 
+ 
 var vm = new Vue({
     el: '#managx-app',
     data() {
@@ -39,9 +35,7 @@ var vm = new Vue({
  
         }
     },
-    mounted: {
-
-    },
+    
     method: {
         get_projects: function (no, from) {
             var no = no, from = from;
