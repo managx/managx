@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "G:\\wamp64\\www\\managx\\wp-content\\plugins\\managx\\assets\\js";
+/******/ 	__webpack_require__.p = "/Applications/MAMP/htdocs/managx/wp-content/plugins/managx/assets/js";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -83,6 +83,30 @@
 	            projects: []
 
 	        };
+	    },
+
+	    mounted: {},
+	    method: {
+	        get_projects: function get_projects(no, from) {
+	            var no = no,
+	                from = from;
+
+	            var data = {
+	                'action': 'get_projects',
+	                'no': no,
+	                'from': from
+	            };
+	            jQuery.ajax({
+	                'data': data,
+	                'type': 'post',
+	                'url': ajaxurl,
+	                success: function success(data) {
+	                    if (data.success == true) {
+	                        this.$parent.projects.push(data.project);
+	                    }
+	                }
+	            });
+	        }
 	    }
 	});
 
