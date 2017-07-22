@@ -34,11 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-<<<<<<< HEAD
 /******/ 	__webpack_require__.p = "/Applications/MAMP/htdocs/managx/wp-content/plugins/managx/assets/js";
-=======
-/******/ 	__webpack_require__.p = "/var/www/html/wp-contacts/wp-content/plugins/managx/assets/js";
->>>>>>> 9638c38a2840d6f20ef4b51ee24843ff4cf0958a
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -95,7 +91,7 @@
 	        };
 	    },
 
-	    mounted: {},
+
 	    method: {
 	        get_projects: function get_projects(no, from) {
 	            var no = no,
