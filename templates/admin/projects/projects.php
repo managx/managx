@@ -40,7 +40,7 @@
         </div>
         <!--project lists-->
         <div class="row pb25 mr0"> 
-            <project/>
+            <project v-for="project in projects " :project="project" />
         </div>
         <!--project list ends-->
     </div>

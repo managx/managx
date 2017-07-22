@@ -23,35 +23,51 @@ import users_list from './components/users';
  
 Vue.component('users-list', users_list);
 
- 
+
 var vm = new Vue({
     el: '#managx-app',
     data() {
         return {
             msg: 'Hello Managx!',
             showCreateForm: false,
-            projects: [],
-
- 
+            projects: [
+                {
+                    'name' : "Project  Name", 
+                    'Discription' : "Discription"
+                },
+                {
+                    'name' : "Project  Name", 
+                    'Discription' : "Discription"
+                }, 
+                {
+                    'name' : "Project  Name", 
+                    'Discription' : "Discription"
+                },
+                {
+                    'name' : "Project  Name", 
+                    'Discription' : "Discription"
+                }
+            ], 
         }
     },
-    
-    method: {
-        get_projects: function (no, from) {
-            var no = no, from = from;
-
+    mounted(){ 
+        this.getProjects(20, 0); 
+    },
+    methods: {
+        getProjects: function (limit, offset) {
+            
             var data = {
                 'action': 'get_projects',
-                'no': no,
-                'from': from,
+                'limit': limit,
+                'offset': offset,
             }
             jQuery.ajax({
                 'data': data,
-                'type': 'post',
+                'type': 'get',
                 'url': ajaxurl,
                 success: function (data) {
                     if (data.success == true) {
-                        this.$parent.projects.push(data.project);
+                        this.$parent.projects.push(data.projects);
                     }
                 }
             });

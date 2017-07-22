@@ -1,8 +1,15 @@
 export default {
     template: '#tmpl-managx-project',
+    props: ['project'],
     data() {
-        return {
-            name: 'Hello Managx!'
+        return{
+            
         }
+    },
+    mounted(){
+      console.log(this.project);   
+    },
+    method: {
+
     }
 }
