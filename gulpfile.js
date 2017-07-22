@@ -15,6 +15,7 @@ var dirs = {
 gulp.task('less', function() {
     return gulp.src([
             dirs.less+'/style.less',
+            dirs.less+'/managx-bs.less',
             dirs.less+'/framework.less'
         ])
         .pipe(less())
