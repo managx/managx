@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row pt25 pb25">
             <div class="col-sm-6">
-                <a href="" class="btn create_button" @click="show_create_form = !show_create_form" data-toggle="modal" data-target="#create_project_form">Create Project</a>
+                <a href="" class="btn create_button" @click="showCreateForm = !showCreateForm" data-toggle="modal" data-target="#create_project_form">Create Project</a>
             </div>
             <div class="col-sm-6 text-right project-sort-option font2">
                 <label>Sort by :</label>
@@ -30,9 +30,9 @@
             </div>
 
             <div class="col-md-12 col-sm-12">
-                <div class="col-sm-6 create_project_form_container" v-if='show_create_form'> 
-                    <a href="JavaScript:void(0)" @click="show_create_form = !show_create_form" class="btn btn-danger btn-xs mt15 pull-right"><span class="fa fa-times-circle">x</span></a>
-                    <project_form :show_create_form='show_create_form'><project_form  /> 
+                <div class="col-sm-6 create_project_form_container" v-if='showCreateForm'> 
+                    <a href="JavaScript:void(0)" @click="showCreateForm = !showCreateForm" class="btn btn-danger btn-xs mt15 pull-right"><span class="fa fa-times-circle">x</span></a>
+                    <project-form /> 
                 </div>
             </div>
 
@@ -300,6 +300,5 @@
 
 <?php
     managx_load_template( 'admin/projects/template-project.php' );
-    managx_load_template( 'admin/projects/template-project-form.php' );
-   
+    managx_load_template( 'admin/projects/template-project-form.php' ); 
 ?>

@@ -3,7 +3,7 @@
 /**
  * Handle all function of list related.  
  */
-class managx_lists {
+class Managx_Admin_Lists {
 
     function __construct() {
         

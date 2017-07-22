@@ -50,13 +50,13 @@
 
 	var _project2 = _interopRequireDefault(_project);
 
-	var _project_form = __webpack_require__(2);
+	var _projectForm = __webpack_require__(2);
 
-	var _project_form2 = _interopRequireDefault(_project_form);
+	var _projectForm2 = _interopRequireDefault(_projectForm);
 
-	var _users_list = __webpack_require__(3);
+	var _users = __webpack_require__(3);
 
-	var _users_list2 = _interopRequireDefault(_users_list);
+	var _users2 = _interopRequireDefault(_users);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70,16 +70,18 @@
 
 	Vue.component('project', _project2.default);
 
-	Vue.component('project_form', _project_form2.default);
+	Vue.component('project-form', _projectForm2.default);
 
-	Vue.component('users_list', _users_list2.default);
+	Vue.component('users-list', _users2.default);
 
 	var vm = new Vue({
 	    el: '#managx-app',
 	    data: function data() {
 	        return {
 	            msg: 'Hello Managx!',
-	            show_create_form: false
+	            showCreateForm: false,
+	            projects: []
+
 	        };
 	    }
 	});
@@ -115,15 +117,35 @@
 	    template: '#tmpl-managx-project-form',
 	    data: function data() {
 	        return {
-	            project: {}
-
+	            project: {},
+	            form: {
+	                name: '',
+	                description: ''
+	            }
 	        };
 	    },
 
-	    props: ['show_create_form'],
+	    props: ['showCreateForm'],
+
 	    methods: {
 	        create_project: function create_project() {
-	            this.$parent.show_create_form = false;
+	            this.$parent.showCreateForm = false;
+
+	            var data = {
+	                'action': 'create_project',
+	                'formData': jQuery("#create-project-form").serialize()
+	            };
+
+	            jQuery.ajax({
+	                data: data,
+	                type: 'post',
+	                url: ajaxurl,
+	                success: function success(data) {
+	                    if (data.success == true) {
+	                        this.$parent.projects.push(data.project);
+	                    }
+	                }
+	            });
 	        }
 	    }
 
@@ -139,16 +161,15 @@
 	    value: true
 	});
 	exports.default = {
-	    template: '#tmpl-managx-users-list',
+	    template: '#tmpl-managx-users',
 	    data: function data() {
 	        return {
-	            user_list: managx_localize_vars.wp_user_list
-
+	            users: []
 	        };
 	    },
 
-	    props: ['users']
-
+	    props: '',
+	    mounted: function mounted() {}
 	};
 
 /***/ })
