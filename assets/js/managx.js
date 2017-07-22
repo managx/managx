@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/var/www/html/wp-contacts/wp-content/plugins/managx/assets/js";
+/******/ 	__webpack_require__.p = "/Applications/MAMP/htdocs/managx/wp-content/plugins/managx/assets/js";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -50,6 +50,14 @@
 
 	var _project2 = _interopRequireDefault(_project);
 
+	var _project_form = __webpack_require__(2);
+
+	var _project_form2 = _interopRequireDefault(_project_form);
+
+	var _users_list = __webpack_require__(3);
+
+	var _users_list2 = _interopRequireDefault(_users_list);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function managx_js_var_extract(variable) {
@@ -62,11 +70,16 @@
 
 	Vue.component('project', _project2.default);
 
+	Vue.component('project_form', _project_form2.default);
+
+	Vue.component('users_list', _users_list2.default);
+
 	var vm = new Vue({
 	    el: '#managx-app',
 	    data: function data() {
 	        return {
-	            msg: 'Hello Managx!'
+	            msg: 'Hello Managx!',
+	            show_create_form: false
 	        };
 	    }
 	});
@@ -87,6 +100,55 @@
 	            name: 'Hello Managx!'
 	        };
 	    }
+	};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    template: '#tmpl-managx-project-form',
+	    data: function data() {
+	        return {
+	            project: {}
+
+	        };
+	    },
+
+	    props: ['show_create_form'],
+	    methods: {
+	        create_project: function create_project() {
+	            this.$parent.show_create_form = false;
+	        }
+	    }
+
+	};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    template: '#tmpl-managx-users-list',
+	    data: function data() {
+	        return {
+	            user_list: managx_localize_vars.wp_user_list
+
+	        };
+	    },
+
+	    props: ['users']
+
 	};
 
 /***/ })

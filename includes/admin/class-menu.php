@@ -133,6 +133,7 @@ class Managx_Admin_Menu {
 
         $localize_vars = array(
             'i18n' => $i18n,
+            'wp_user_list' => get_users(),
         );
 
 

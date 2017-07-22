@@ -6,15 +6,24 @@ function managx_js_var_extract(variable) {
 
 managx_js_var_extract(managx_localize_vars);
 
+// Main Project Components 
 import project from './components/project';
+Vue.component('project', project); 
 
-Vue.component('project', project);
+// Project Form Component 
+import project_form from './components/project/project_form';
+Vue.component('project_form', project_form);
+
+// All WP User List Component 
+import users_list from './components/project/users_list';
+Vue.component('users_list', users_list);
 
 var vm = new Vue({
     el: '#managx-app',
     data() {
         return {
-            msg: 'Hello Managx!'
+            msg: 'Hello Managx!',
+            show_create_form: false, 
         }
     }
 });

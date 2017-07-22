@@ -810,16 +810,23 @@ ul {
 }
 .project_activity .project_activity_sidebar_container ul li {
   /*.active{
-				border-left: 3px solid #2e95cb;
-				color: #444444;
-				font-weight:bold;
-			}*/
+                    border-left: 3px solid #2e95cb;
+                    color: #444444;
+                    font-weight:bold;
+            }*/
 }
 .project_activity .project_activity_sidebar_container ul li a {
   display: block;
   font-size: 14px;
   padding: 10px 0 10px 15px;
   color: #444444;
+}
+.create_project_form_container {
+  /*position: absolute; */
+  z-index: 99;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);
+  margin: auto 30px;
 }
 
 .r-15 {
