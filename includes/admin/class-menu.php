@@ -133,10 +133,11 @@ class Managx_Admin_Menu {
         $i18n = managx_get_localize_strings();
 
         $localize_vars = array(
-            'i18n' => $i18n,
-            'wp_user_list' => get_users(),
+            'i18n' => $i18n, 
+            'project_home' => home_url().'/wp-admin/admin.php?page=managx', 
         );
 
+        // managx_localize_vars.home_url 
 
         wp_enqueue_script( 'managx-vue', MANAGX_ASSETS . '/js/vendor/vue' . $suffix . '.js', array(), MANAGX_VERSION, true );
         wp_enqueue_script( 'managx-scripts', MANAGX_ASSETS . '/js/managx' . $suffix . '.js', array( 'managx-vue' ), MANAGX_VERSION, true );

@@ -2,7 +2,7 @@
 /**
  * Handle all function of task related.  
  */
-class managx_tasks {
+class Managx_Admin_Tasks {
 
     function __construct() {
         

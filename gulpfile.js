@@ -45,6 +45,14 @@ gulp.task('uglify', function () {
         .pipe(gulp.dest(dirs.js))
 });
 
+gulp.task('watch', function () {
+    gulp.watch(dirs.less+'/**', ['less']);
+
+    gulp.watch(dirs.js+'/components/**', ['webpack']);
+
+    gulp.watch(dirs.js+'/main.js', ['webpack']);
+});
+
 gulp.task('default', ['less', 'webpack']);
 gulp.task('release', ['less', 'makepot', 'webpack', 'uglify']);
 gulp.task('zip', ['clean', 'copy', 'compress']);

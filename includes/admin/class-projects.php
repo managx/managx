@@ -3,7 +3,7 @@
 /**
  * Handle all function of project related.  
  */
-class managx_projects {
+class Managx_Admin_Projects {
 
     function __construct() {
         
@@ -30,7 +30,12 @@ class managx_projects {
      * @return void
      */
     function get_project( $project_id ) {
+        global $wpdb;
+        $table = $wpdb->prefix . 'managx_projects';
+        $sql = "SELECT * FROM {$table}  WHERE ID = {$project_id} ";
+        $project = $wpdb->get_row($sql);
         
+        return $project ;
     }
 
     /**
@@ -40,8 +45,17 @@ class managx_projects {
      *
      * @return int project id on succes, false on failure
      */
-    function create_project(){
-        
+    function create_project( $projet_data ) {
+
+        // save to DB 
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_projects';
+        $wpdb->insert( $table, $projet_data );
+        $pid     = $wpdb->insert_id;
+        // return project_object 
+        $project = $this->get_project( $pid );
+
+        return $project;
     }
 
     /**
@@ -110,7 +124,5 @@ class managx_projects {
     function delete_project( $project_id ) {
         
     }
-    
-    
-    
+
 }

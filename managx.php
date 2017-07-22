@@ -230,6 +230,7 @@ class ManagX {
     private function instantiate() {
         new Managx_Admin_Menu();
         new Managx_Admin_Form_Handler();
+        new Managx_Admin_Ajax_Handler();
     }
 
     /**
