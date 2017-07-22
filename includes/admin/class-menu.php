@@ -123,8 +123,9 @@ class Managx_Admin_Menu {
             return;
         }
 
-        wp_enqueue_style( 'managx-bs-css', MANAGX_ASSETS . '/css/bootstrap.min.css' );
-        wp_enqueue_style( 'managx-admin-style', MANAGX_ASSETS . '/css/style.css' );
+        //wp_enqueue_style( 'managx-bs-css', MANAGX_ASSETS . '/css/bootstrap.min.css' );
+        wp_enqueue_style( 'managx-bs-css', MANAGX_ASSETS . '/css/managx-bs.css' );
+        //wp_enqueue_style( 'managx-admin-style', MANAGX_ASSETS . '/css/style.css' );
         wp_enqueue_style( 'managx-admin-style', MANAGX_ASSETS . '/css/vue-multiselect.min.css' );
         wp_enqueue_style( 'managx-lato-font', 'https://fonts.googleapis.com/css?family=Lato' );
 
