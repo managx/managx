@@ -16,8 +16,19 @@ class Managx_Admin_Projects {
      *
      * @return void
      */
-    function get_projets() {
+    function get_projets($offset = 0, $limit = 20, $where=null) {
+         global $wpdb;
+        $table = $wpdb->prefix . 'managx_projects';
+        $sql = "SELECT * FROM {$table} ";
+        if($where){
+            $sql .= " WHERE 1 = 1 AND {$where} " ; 
+        }
         
+        $sql .= " LIMIT {$offset} , {$limit}  " ;
+       
+        $projects = $wpdb->get_results($sql); 
+        
+        return $projects ;
     }
 
     /**

@@ -1,12 +1,13 @@
-<script type="text/x-template" id="tmpl-managx-project">
+<script type="text/x-template" id="tmpl-managx-project"> 
        <div class="col-sm-4 mb15 pr0">
                 <div class="bg-white pr15 pl15 pt25 pb25">
-                    <h2 class="mb20">Create An iPhone App</h2>
+                    <h2 class="mb20">{{project.name}}</h2>
                     <div class="oh">
                         <div class="pull-left">Last Updated : 14 mins ago </div>
                         <div class="pull-right"><i class="glyphicon glyphicon-lock"></i> Everyone</div>
                     </div>
                     <div>
+                    {{project}}
                         Deadline : 23 June, 2016
                     </div>
                     <div class="assignees oh mb25 mt25">
