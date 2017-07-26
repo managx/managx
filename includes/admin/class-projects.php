@@ -14,21 +14,25 @@ class Managx_Admin_Projects {
      *
      * @since v0.0.1
      *
+     * @param int offset  
+     * @param int limit 
+     * @param string where 
+     * 
      * @return void
      */
-    function get_projets($offset = 0, $limit = 20, $where=null) {
-         global $wpdb;
+    function get_projets( $offset = 0, $limit = 20, $where = null ) {
+        global $wpdb;
         $table = $wpdb->prefix . 'managx_projects';
-        $sql = "SELECT * FROM {$table} ";
-        if($where){
-            $sql .= " WHERE 1 = 1 AND {$where} " ; 
+        $sql   = "SELECT * FROM {$table} ";
+        if ( $where ) {
+            $sql .= " WHERE 1 = 1 AND {$where} ";
         }
-        
-        $sql .= " LIMIT {$offset} , {$limit}  " ;
-       
-        $projects = $wpdb->get_results($sql); 
-        
-        return $projects ;
+
+        $sql .= " LIMIT {$offset} , {$limit}  ";
+
+        $projects = $wpdb->get_results( $sql );
+
+        return $projects;
     }
 
     /**
@@ -42,17 +46,19 @@ class Managx_Admin_Projects {
      */
     function get_project( $project_id ) {
         global $wpdb;
-        $table = $wpdb->prefix . 'managx_projects';
-        $sql = "SELECT * FROM {$table}  WHERE ID = {$project_id} ";
-        $project = $wpdb->get_row($sql);
-        
-        return $project ;
+        $table   = $wpdb->prefix . 'managx_projects';
+        $sql     = "SELECT * FROM `{$table}`  WHERE `id` = {$project_id} ";
+        $project = $wpdb->get_row( $sql );
+         
+        return $project;
     }
 
     /**
      * Create project
-     *
+     * 
      * @since v0.0.1
+     * 
+     * @param array $projet_data
      *
      * @return int project id on succes, false on failure
      */
@@ -65,7 +71,7 @@ class Managx_Admin_Projects {
         $pid     = $wpdb->insert_id;
         // return project_object 
         $project = $this->get_project( $pid );
-
+        
         return $project;
     }
 

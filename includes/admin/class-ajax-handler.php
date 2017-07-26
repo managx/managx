@@ -8,26 +8,26 @@ class Managx_Admin_Ajax_Handler {
     }
 
     public function get_projects() {
-        $offset              = $_GET[ 'offset' ];
-        $limit               = $_GET[ 'limit' ];
+        $offset                 = $_GET[ 'offset' ];
+        $limit                  = $_GET[ 'limit' ];
         $response[ 'projects' ] = array();
-        $response[ 'success' ] = false;
-        $project_class       = new Managx_Admin_Projects();
-        $projects            = $project_class->get_projets( $offset, $limit );
+        $response[ 'success' ]  = false;
+        $project_class          = new Managx_Admin_Projects();
+        $projects               = $project_class->get_projets( $offset, $limit );
         if ( $projects ) {
-           
+
             $response[ 'projects' ] = (object) $projects;
-            $response[ 'success' ] = true;
+            $response[ 'success' ]  = true;
         }
-        echo json_encode( $response );
-        die();
+        wp_send_json( $response );
     }
 
     public function create_project() {
 
-        $response     = array();
-        $cuid         = wp_get_current_user()->ID;
-        $project_data = array();
+        $response            = array();
+        $response[ 'success' ] = FALSE;
+        $cuid                = wp_get_current_user()->ID;
+        $project_data        = array();
         parse_str( $_POST[ 'formData' ], $project_data );
 
         $project_data[ 'create_by' ]    = $cuid;
@@ -39,7 +39,8 @@ class Managx_Admin_Ajax_Handler {
         $project = $project_class->create_project( $project_data );
 
         if ( $project ) {
-            $respons[ 'project' ] = $project;
+            $response[ 'project' ] = $project;
+            $response[ 'success' ]   = TRUE;
         }
 
         wp_send_json( $response );

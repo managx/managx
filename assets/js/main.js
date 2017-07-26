@@ -42,16 +42,19 @@ var vm = new Vue({
                 'action': 'get_projects',
                 'limit': limit,
                 'offset': offset,
-            }, _this = this
+            }, _this = this;
 
             jQuery.ajax({
                 'data': data,
                 'type': 'get',
                 'url': ajaxurl,
-                success: function (data) { 
-                    var data = JSON.parse(data); 
-                    if (data.success == true) { 
-                        _this.projects.push(data.projects); 
+                success: function (data) {
+                    if (data.success == true) {
+                        var projects = data.projects;
+                        for (var key in projects) {
+                            _this.projects.push(projects[key]);
+                        }
+                        //
                     }
                 }
             });

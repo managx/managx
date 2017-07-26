@@ -20,7 +20,7 @@ export default {
             var data = {
                 'action': 'create_project',
                 'formData': jQuery("#create-project-form").serialize(),
-            }
+            }, _this = this; 
 
             jQuery.ajax({
                 data: data,
@@ -28,7 +28,8 @@ export default {
                 url: ajaxurl,
                 success: function (data) {
                     if (data.success == true) {
-                        this.$parent.projects.push(data.project);
+                        console.log(data.project) ;
+                        _this.$parent.projects.push(data.project);
                     }
 
                 }
