@@ -29,6 +29,10 @@ Vue.component('task-list', tasklist);
 import taskListsRoot from './components/task-lists-root';
 Vue.component('task-lists-root', taskListsRoot);
 
+// Tasks Components
+import tasksRoot from './components/tasks-root';
+Vue.component('tasks-root', tasksRoot);
+
 // All WP User List Component
 import users_list from './components/users';
 
@@ -42,7 +46,9 @@ var managx_app = new Vue({
             showCreateForm: false,
             projects: [],
             //
-            lists : []
+            lists : [],
+            //
+            tasks : [],
         }
     },
     mounted() {
@@ -56,6 +62,10 @@ var managx_app = new Vue({
         //get lists
         eventGetLists : function ( res ) {
             this.lists = res;
+        },
+        //get tasks
+        eventGetTasks : function ( res ) {
+            this.tasks = res;
         }
     }
 });

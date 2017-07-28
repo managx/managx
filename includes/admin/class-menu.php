@@ -35,7 +35,10 @@ class Managx_Admin_Menu {
 
         add_submenu_page( 'managx', __( 'All Projects', 'managx' ), __( 'All Projects', 'managx' ), $capabilities, 'managx', array( $this, 'projects_page' ) );
 
+        //lists
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'All Lists', 'managx' ), __( 'All Lists', 'managx' ), $capabilities, 'lists', array( $this, 'lists_page' ) );
+        //tasks
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'All Tasks', 'managx' ), __( 'All Tasks', 'managx' ), $capabilities, 'tasks', array( $this, 'tasks_page' ) );
         // add_action( "load-$menupage", array( $this, 'screen_option' ) );
 
         /* temporary : for html */
@@ -54,6 +57,10 @@ class Managx_Admin_Menu {
 
     public function lists_page() {
         managx_load_template( 'admin/lists/lists.php' );
+    }
+
+    public function tasks_page() {
+        managx_load_template( 'admin/tasks/tasks.php' );
     }
 
     /**
