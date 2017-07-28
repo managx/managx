@@ -1,4 +1,5 @@
 <div class="wrap managx-wrap managx-container" id="managx-app">
+    <projects-root @event-get-projects="eventGetProjects"></projects-root>
     <div class="container-fluid mt20">
         <div class="row mr0 ml0">
             <div class="col-sm-12 horizontal-nav bg-white">
@@ -29,7 +30,7 @@
             </div>
 
             <div class="col-md-12 col-sm-12">
- 
+
                 <div class="col-sm-6 create_project_form_container" v-if='showCreateForm'>
                     <a href="JavaScript:void(0)" @click.prevent="showCreateForm =false" class="btn btn-danger btn-xs mt15 pull-right"><span class="fa fa-times-circle">x</span></a>
                     <project-form />
@@ -38,7 +39,7 @@
 
         </div>
         <!--project lists-->
-        <div class="row pb25 mr0"> 
+        <div class="row pb25 mr0">
             <project v-for="project in projects " :project="project" :key="project.id" />
         </div>
         <!--project list ends-->

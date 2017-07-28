@@ -6,7 +6,7 @@
 class Managx_Admin_Projects {
 
     function __construct() {
-        
+
     }
 
     /**

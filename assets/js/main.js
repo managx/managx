@@ -10,6 +10,10 @@ import Multiselect from 'vue-multiselect'
         Vue.component('multiselect', Multiselect);
 
 // Main Project Components
+import projectsRoot from './components/projects-root';
+Vue.component('projects-root', projectsRoot);
+
+// Main Project Components
 import project from './components/project';
 Vue.component('project', project);
 
@@ -17,47 +21,41 @@ Vue.component('project', project);
 import project_form from './components/project-form';
 Vue.component('project-form', project_form);
 
+// Main List Components
+import tasklist from './components/task-list';
+Vue.component('task-list', tasklist);
+
+// Task Lists Components
+import taskListsRoot from './components/task-lists-root';
+Vue.component('task-lists-root', taskListsRoot);
 
 // All WP User List Component
 import users_list from './components/users';
 
 Vue.component('users-list', users_list);
 
-var vm = new Vue({
+var managx_app = new Vue({
     el: '#managx-app',
     data() {
         return {
             msg: 'Hello Managx!',
             showCreateForm: false,
             projects: [],
+            //
+            lists : []
         }
     },
     mounted() {
-        this.getProjects(20, 0);
+
     },
     methods: {
-        getProjects: function (limit, offset) {
-
-            var data = {
-                'action': 'get_projects',
-                'limit': limit,
-                'offset': offset,
-            }, _this = this;
-
-            jQuery.ajax({
-                'data': data,
-                'type': 'get',
-                'url': ajaxurl,
-                success: function (data) {
-                    if (data.success == true) {
-                        var projects = data.projects;
-                        for (var key in projects) {
-                            _this.projects.push(projects[key]);
-                        }
-                        //
-                    }
-                }
-            });
+        //get projects
+        eventGetProjects : function ( res ) {
+            this.projects = res;
+        },
+        //get lists
+        eventGetLists : function ( res ) {
+            this.lists = res;
         }
     }
 });

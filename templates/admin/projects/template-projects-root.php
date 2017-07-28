@@ -1,1 +1,1 @@
-<?php
+<script type="text/x-template" id="tmpl-managx-projects-root"></script>

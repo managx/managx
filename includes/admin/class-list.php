@@ -5,8 +5,12 @@
  */
 class Managx_Admin_Lists {
 
+    protected $table;
+
     function __construct() {
-        
+
+        global $wpdb;
+        $this->table = $wpdb->prefix . 'managx_lists';
     }
 
     /**
@@ -18,8 +22,17 @@ class Managx_Admin_Lists {
      *
      * @return void
      */
-    function get_lists( $project_id ) {
-        
+    function get_lists( $project_id ,$offset = 0, $limit = 20 ) {
+
+        global $wpdb;
+
+        if ( !$project_id ) return;
+
+        $sql   = "SELECT * FROM {$this->table} WHERE project_id = {$project_id} ";
+        $sql .= " LIMIT {$offset} , {$limit}  ";
+        $lists = $wpdb->get_results( $sql );
+
+        return $lists;
     }
 
     /**
@@ -32,7 +45,11 @@ class Managx_Admin_Lists {
      * @return void
      */
     function get_list( $list_id ) {
-        
+        global $wpdb;
+        $sql     = "SELECT * FROM `{$this->table}`  WHERE `id` = {$list_id} ";
+        $list = $wpdb->get_row( $sql );
+
+        return $list;
     }
 
     /**

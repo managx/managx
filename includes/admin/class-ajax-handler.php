@@ -5,6 +5,9 @@ class Managx_Admin_Ajax_Handler {
     public function __construct() {
         add_action( 'wp_ajax_create_project', array( $this, 'create_project' ) );
         add_action( 'wp_ajax_get_projects', array( $this, 'get_projects' ) );
+
+        //lists
+        add_action( 'wp_ajax_get_lists', array( $this, 'get_lists' ) );
     }
 
     public function get_projects() {
@@ -43,6 +46,26 @@ class Managx_Admin_Ajax_Handler {
             $response[ 'success' ]   = TRUE;
         }
 
+        wp_send_json( $response );
+    }
+
+    //lists
+    public function get_lists() {
+        $offset                 = $_GET[ 'offset' ];
+        $limit                  = $_GET[ 'limit' ];
+        $response[ 'lists' ] = array();
+        $response[ 'success' ]  = false;
+        $list_class          = new Managx_Admin_Lists();
+
+        //custom
+        $project_id = 1;
+
+        $lists               = $list_class->get_lists( $project_id, $offset, $limit );
+        if ( $lists ) {
+
+            $response[ 'lists' ] = (object) $lists;
+            $response[ 'success' ]  = true;
+        }
         wp_send_json( $response );
     }
 
