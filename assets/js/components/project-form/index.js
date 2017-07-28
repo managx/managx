@@ -7,6 +7,7 @@ export default {
             form: {
                 name: '',
                 description: '',
+                user: ''
             },
         }
     },
@@ -16,11 +17,11 @@ export default {
         create_project: function () {
             this.$parent.showCreateForm = false;
 
-            // Save to DB 
+            // Save to DB
             var data = {
                 'action': 'create_project',
                 'formData': jQuery("#create-project-form").serialize(),
-            }, _this = this; 
+            }, _this = this;
 
             jQuery.ajax({
                 data: data,
@@ -34,7 +35,7 @@ export default {
 
                 }
             });
-            // push to 
+            // push to
         }
     },
 

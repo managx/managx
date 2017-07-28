@@ -16,7 +16,7 @@
             <div class="form-inner-row">
                 <label class="form-inner-lbl">Assign User</label>
                 <div class="form-inner-right-side-element">
-                    <multiselect v-model="user" :options="['Select option', 'options', 'selected', 'mulitple', 'label', 'searchable', 'clearOnSelect', 'hideSelected', 'maxHeight', 'allowEmpty', 'showLabels', 'onChange', 'touched']" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Select User"></multiselect>
+                    <multiselect v-model="form.user" :options="['Select option', 'options', 'selected', 'mulitple', 'label', 'searchable', 'clearOnSelect', 'hideSelected', 'maxHeight', 'allowEmpty', 'showLabels', 'onChange', 'touched']" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Select User"></multiselect>
                 </div>
 
                 <div class="form-inner-row">

@@ -1,3 +1,6 @@
+import VueRouter from 'vue-router';
+import store from './store';
+
 function managx_js_var_extract(variable) {
     for (var key in variable) {
         window[key] = variable[key];
@@ -6,8 +9,8 @@ function managx_js_var_extract(variable) {
 
 managx_js_var_extract(managx_localize_vars);
 
-import Multiselect from 'vue-multiselect'
-        Vue.component('multiselect', Multiselect);
+import Multiselect from 'vue-multiselect';
+Vue.component('multiselect', Multiselect);
 
 // Main Project Components
 import projectsRoot from './components/projects-root';
@@ -17,7 +20,7 @@ Vue.component('projects-root', projectsRoot);
 import project from './components/project';
 Vue.component('project', project);
 
-// Project Form Component 
+// Project Form Component
 import project_form from './components/project-form';
 Vue.component('project-form', project_form);
 
@@ -38,7 +41,10 @@ import users_list from './components/users';
 
 Vue.component('users-list', users_list);
 
+Vue.use(VueRouter);
+
 var managx_app = new Vue({
+    store,
     el: '#managx-app',
     data() {
         return {
@@ -46,25 +52,25 @@ var managx_app = new Vue({
             showCreateForm: false,
             projects: [],
             //
-            lists : [],
+            lists: [],
             //
-            tasks : [],
+            tasks: [],
         }
     },
-    mounted() {
+    created() {
 
     },
     methods: {
         //get projects
-        eventGetProjects : function ( res ) {
+        eventGetProjects(res) {
             this.projects = res;
         },
         //get lists
-        eventGetLists : function ( res ) {
+        eventGetLists(res) {
             this.lists = res;
         },
         //get tasks
-        eventGetTasks : function ( res ) {
+        eventGetTasks(res) {
             this.tasks = res;
         }
     }
