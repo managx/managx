@@ -112,4 +112,5 @@
 
 <?php
 managx_load_template( 'admin/projects/template-project.php' );
+managx_load_template( 'admin/projects/template-projects-root.php' );
 managx_load_template( 'admin/projects/template-project-form.php' );
