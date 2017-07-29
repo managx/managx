@@ -1,13 +1,12 @@
 export default {
     template: '#tmpl-managx-task-lists-root',
     data() {
-        return{
-            
+        return {
+
         }
     },
     methods: {
-        getLists: function (limit, offset) {
-
+        getLists (limit, offset) {
             var data = {
                 'action': 'get_lists',
                 'limit': limit,
@@ -34,7 +33,7 @@ export default {
             });
         }
     },
-    mounted(){
+    mounted () {
         this.getLists(20,0);
     },
     method: {

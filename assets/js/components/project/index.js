@@ -2,12 +2,12 @@ export default {
     template: '#tmpl-managx-project',
     props: ['project'],
     data() {
-        return{
-            
+        return {
+
         }
     },
-    mounted(){
-        
+    mounted (){
+
     },
     method: {
 

@@ -2,11 +2,11 @@ export default {
     template: '#tmpl-managx-tasks-root',
     data() {
         return{
-            
+
         }
     },
     methods: {
-        getTasks: function (limit, offset) {
+        getTasks (limit, offset) {
 
             var data = {
                 'action': 'get_tasks',
@@ -34,7 +34,7 @@ export default {
             });
         }
     },
-    mounted(){
+    mounted () {
         this.getTasks(20,0);
     },
     method: {

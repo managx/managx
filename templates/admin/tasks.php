@@ -111,6 +111,6 @@
 </div>
 
 <?php
-managx_load_template( 'admin/tasks/template-task.php' );
-managx_load_template( 'admin/tasks/template-task-form.php' );
-managx_load_template( 'admin/tasks/template-tasks-root.php' );
+managx_load_template( 'admin/vue-templates/template-task.php' );
+managx_load_template( 'admin/vue-templates/template-task-form.php' );
+managx_load_template( 'admin/vue-templates/template-tasks-root.php' );

@@ -48,6 +48,7 @@ gulp.task('watch', function () {
     gulp.watch(dirs.less+'/**', ['less']);
 
     gulp.watch(dirs.js+'/components/**', ['webpack']);
+    gulp.watch(dirs.js+'/store/**', ['webpack']);
 
     gulp.watch(dirs.js+'/main.js', ['webpack']);
 });

@@ -12,39 +12,51 @@ managx_js_var_extract(managx_localize_vars);
 import Multiselect from 'vue-multiselect';
 Vue.component('multiselect', Multiselect);
 
-// Main Project Components
-import projectsRoot from './components/projects-root';
-Vue.component('projects-root', projectsRoot);
+// Main Project Component
+import ProjectsRoot from './components/projects-root';
 
-// Main Project Components
-import project from './components/project';
-Vue.component('project', project);
+// Settings Component
+import Settings from './components/settings';
+
+// Main Project Component
+import Project from './components/project';
+Vue.component('project', Project);
 
 // Project Form Component
-import project_form from './components/project-form';
-Vue.component('project-form', project_form);
+import ProjectForm from './components/project-form';
+// Vue.component('project-form', ProjectForm);
 
-// Main List Components
-import tasklist from './components/task-list';
-Vue.component('task-list', tasklist);
+// Main List Component
+import TaskList from './components/task-list';
+Vue.component('task-list', TaskList);
 
-// Task Lists Components
-import taskListsRoot from './components/task-lists-root';
-Vue.component('task-lists-root', taskListsRoot);
+// Task Lists Component
+import TaskListsRoot from './components/task-lists-root';
+Vue.component('task-lists-root', TaskListsRoot);
 
-// Tasks Components
-import tasksRoot from './components/tasks-root';
-Vue.component('tasks-root', tasksRoot);
+// Tasks Component
+import TasksRoot from './components/tasks-root';
+Vue.component('tasks-root', TasksRoot);
 
 // All WP User List Component
-import users_list from './components/users';
+import UsersList from './components/users';
 
-Vue.component('users-list', users_list);
+Vue.component('users-list', UsersList);
 
-Vue.use(VueRouter);
+const routes = [
+    { path: '/', component: ProjectsRoot },
+    { path: '/settings', component: Settings },
+    { path: '/projects/create', component: ProjectForm }
+];
 
-var managx_app = new Vue({
+const router = new VueRouter({
+    routes,
+    'linkExactActiveClass': 'active'
+});
+
+var managxApp = new Vue({
     store,
+    router,
     el: '#managx-app',
     data() {
         return {

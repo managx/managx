@@ -4,8 +4,6 @@
             <div class="col-sm-12 horizontal-nav bg-white">
                 <ul>
                     <li><a href="" class="active">Projects</a></li>
-                    <li><a href="">Activity</a></li>
-                    <li><a href="">Calendar</a></li>
                     <li><a href="">Settings</a></li>
                 </ul>
                 <div class="pull-right oh">

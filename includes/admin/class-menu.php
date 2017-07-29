@@ -31,7 +31,7 @@ class Managx_Admin_Menu {
     public function admin_menu() {
         $capabilities = 'manage_options';
 
-        $this->plugin_page_hooks[] = $menupage                  = add_menu_page( __( 'Projects', 'managx' ), __( 'Projects', 'managx' ), $capabilities, 'managx', array( $this, 'projects_page' ), 'dashicons-id-alt' );
+        $this->plugin_page_hooks[] = add_menu_page( __( 'Projects', 'managx' ), __( 'Projects', 'managx' ), $capabilities, 'managx', array( $this, 'projects_page' ), 'dashicons-id-alt' );
 
         add_submenu_page( 'managx', __( 'All Projects', 'managx' ), __( 'All Projects', 'managx' ), $capabilities, 'managx', array( $this, 'projects_page' ) );
 
@@ -39,7 +39,6 @@ class Managx_Admin_Menu {
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'All Lists', 'managx' ), __( 'All Lists', 'managx' ), $capabilities, 'lists', array( $this, 'lists_page' ) );
         //tasks
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'All Tasks', 'managx' ), __( 'All Tasks', 'managx' ), $capabilities, 'tasks', array( $this, 'tasks_page' ) );
-        // add_action( "load-$menupage", array( $this, 'screen_option' ) );
 
         /* temporary : for html */
 
@@ -48,19 +47,19 @@ class Managx_Admin_Menu {
         /* expense */
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Expense', 'managx' ), __( 'Expense', 'managx' ), $capabilities, 'expense', array( $this, 'expense_page' ) );
         /* individual tasks */
-        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Individual Task', 'managx' ), __( 'Individual Task', 'managx' ), $capabilities, 'individual_task', array( $this, 'individual_task_page' ) );
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Individual Task', 'managx' ), __( 'Individual Task', 'managx' ), $capabilities, 'individual-task', array( $this, 'individual_task_page' ) );
         /* project details */
-        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Project Details', 'managx' ), __( 'Project Details', 'managx' ), $capabilities, 'project_details', array( $this, 'project_details_page' ) );
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Project Details', 'managx' ), __( 'Project Details', 'managx' ), $capabilities, 'project-details', array( $this, 'project_details_page' ) );
         /* activity */
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Activity', 'managx' ), __( 'Activity', 'managx' ), $capabilities, 'activity', array( $this, 'activity_page' ) );
     }
 
     public function lists_page() {
-        managx_load_template( 'admin/lists/lists.php' );
+        managx_load_template( 'admin/lists.php' );
     }
 
     public function tasks_page() {
-        managx_load_template( 'admin/tasks/tasks.php' );
+        managx_load_template( 'admin/tasks.php' );
     }
 
     /**
@@ -69,7 +68,7 @@ class Managx_Admin_Menu {
      * @return void
      */
     public function projects_page() {
-        managx_load_template( 'admin/projects/projects.php' );
+        managx_load_template( 'admin/projects.php' );
     }
 
     /* temporary : conversation_page */
@@ -87,13 +86,13 @@ class Managx_Admin_Menu {
     /* temporary : individual_task_page */
 
     public function individual_task_page() {
-        managx_load_template( 'admin/individual_task.php' );
+        managx_load_template( 'admin/individual-task.php' );
     }
 
     /* temporary : project_details_page */
 
     public function project_details_page() {
-        managx_load_template( 'admin/projects/project_details.php' );
+        managx_load_template( 'admin/project-details.php' );
     }
 
     /* temporary : activity_page */

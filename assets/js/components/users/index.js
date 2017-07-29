@@ -1,13 +1,12 @@
 export default {
     template: '#tmpl-managx-users',
-    data() {
+    data () {
         return {
-          users : [],  
+          users : [],
         }
     },
-     props: '', 
-     mounted() {
-          
-     }
-    
+    props: '',
+    mounted () {
+
+    }
 }

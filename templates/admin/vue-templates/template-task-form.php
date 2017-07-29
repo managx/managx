@@ -27,5 +27,5 @@
     </form>
 </script>
 <?php
-managx_load_template( 'admin/projects/template-users.php' );
+managx_load_template( 'admin/vue-templates/template-users.php' );
 ?>

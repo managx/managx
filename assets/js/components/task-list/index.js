@@ -2,12 +2,12 @@ export default {
     template: '#tmpl-managx-task-list',
     props: ['task'],
     data() {
-        return{
-            
+        return {
+
         }
     },
-    mounted(){
-        
+    created () {
+
     },
     method: {
 

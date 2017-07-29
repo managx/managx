@@ -14,42 +14,36 @@ class Managx_Admin_Ajax_Handler {
     }
 
     public function get_projects() {
-        $offset                 = $_GET[ 'offset' ];
-        $limit                  = $_GET[ 'limit' ];
-        $response[ 'projects' ] = array();
-        $response[ 'success' ]  = false;
-        $project_class          = new Managx_Admin_Projects();
-        $projects               = $project_class->get_projets( $offset, $limit );
-        if ( $projects ) {
+        $offset        = $_GET[ 'offset' ];
+        $limit         = $_GET[ 'limit' ];
+        $project_class = new Managx_Admin_Projects();
+        $projects      = $project_class->get_projets( $offset, $limit );
 
-            $response[ 'projects' ] = (object) $projects;
-            $response[ 'success' ]  = true;
+        if ( ! $projects ) {
+            wp_send_json_error();
         }
-        wp_send_json( $response );
+
+        wp_send_json_success( $projects );
     }
 
     public function create_project() {
-
-        $response            = array();
-        $response[ 'success' ] = FALSE;
-        $cuid                = wp_get_current_user()->ID;
-        $project_data        = array();
+        $cuid         = wp_get_current_user()->ID;
+        $project_data = array();
         parse_str( $_POST[ 'formData' ], $project_data );
 
-        $project_data[ 'create_by' ]    = $cuid;
-        $project_data[ 'project_date' ] = current_time( 'mysql' );
-        $project_data[ 'status' ]       = '1';
+        $project_data['create_by']    = $cuid;
+        $project_data['project_date'] = current_time( 'mysql' );
+        $project_data['status']       = 1;
 
         $project_class = new Managx_Admin_Projects();
 
         $project = $project_class->create_project( $project_data );
 
-        if ( $project ) {
-            $response[ 'project' ] = $project;
-            $response[ 'success' ]   = TRUE;
+        if ( ! $project ) {
+            wp_send_json_error();
         }
 
-        wp_send_json( $response );
+        wp_send_json_success( $project );
     }
 
     //lists
