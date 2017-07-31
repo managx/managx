@@ -9,6 +9,7 @@ class Managx_Admin_Menu {
     public function __construct() {
         add_filter( 'set-screen-option', array( $this, 'set_screen' ), 10, 3 );
         add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+        add_action( 'admin_init', array( $this, 'display_options') );
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts_styles' ) );
     }
 
@@ -52,6 +53,8 @@ class Managx_Admin_Menu {
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Project Details', 'managx' ), __( 'Project Details', 'managx' ), $capabilities, 'project-details', array( $this, 'project_details_page' ) );
         /* activity */
         $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Activity', 'managx' ), __( 'Activity', 'managx' ), $capabilities, 'activity', array( $this, 'activity_page' ) );
+        /* settings */
+        $this->plugin_page_hooks[] = add_submenu_page( 'managx', __( 'Settings', 'managx' ), __( 'Settings', 'managx' ), $capabilities, 'settings', array( $this, 'settings_page' ) );
     }
 
     public function lists_page() {
@@ -99,6 +102,75 @@ class Managx_Admin_Menu {
 
     public function activity_page() {
         managx_load_template( 'admin/activity.php' );
+    }
+
+    public function settings_page()
+    {        
+        managx_load_template( 'admin/settings.php' );
+    }
+
+    public function display_options()
+    {
+        // Time Frame section name, form element name, callback for sanitization
+        register_setting( 'managx-settings', 'time_frame' );
+
+        //section name, display name, callback to print description of section, page to which section is attached.
+        add_settings_section( 'managx-settings-portion1', __( '', 'managx' ), array( $this, 'managx_settings_options' ), 'settings' );
+
+        //setting name, display name, callback to print form element, page in which field is displayed, section to which it belongs.
+        //last field section is optional.
+        add_settings_field( 'time-frame-field', __( 'Time Frame', 'managx' ), array( $this, 'display_time_frame_field' ), 'settings', 'managx-settings-portion1' );
+        
+        // Desktop Notification section
+        register_setting( 'managx-settings', 'notifications_settings');
+        
+        add_settings_field( 'notifications-settings-fields', __( 'Notifications', 'managx' ), array( $this, 'display_notifications_settings' ), 'settings', 'managx-settings-portion1' );
+
+        // Email Notification section
+        register_setting( 'managx-settings', 'email_notifications_settings');
+        
+        add_settings_field( 'email-notifications-settings-fields', __( 'Email Notifications', 'managx' ), array( $this, 'display_email_notifications_settings' ), 'settings', 'managx-settings-portion1' );
+    }
+
+    public function managx_settings_options(){}
+
+    public function display_time_frame_field()
+    {
+        //id and name of form element should be same as the setting name.
+        $time_frame = get_option( 'time_frame' );
+        ?>
+            <select name="time_frame" id="time_frame">
+                <option value="1" <?php echo ( $time_frame == '1' ) ? 'selected' : ''; ?>>1 Month</option>
+                <option value="2" <?php echo ( $time_frame == '2' ) ? 'selected' : ''; ?>>2 Months</option>
+                <option value="3" <?php echo ( $time_frame == '3' ) ? 'selected' : ''; ?>>3 Months</option>
+            </select>
+        <?php
+    }
+
+    public function display_notifications_settings()
+    {
+        ?>
+        <h3><?php _e( 'DESKTOP NOTIFICATION', 'managx' ); ?></h3>
+        <p><?php _e( 'Get notified everytime when there is a new activity', 'managx' ); ?></p>
+        <label><input type="radio" name="notifications_settings" value="1" <?php checked( 1, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified with every activities', 'managx' ); ?></label>
+        <label><input type="radio" name="notifications_settings" value="2" <?php checked( 2, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified only with your activities', 'managx' ); ?></label>
+        <?php
+    }
+
+    public function display_email_notifications_settings()
+    {
+        ?>
+        <h3><?php _e( 'EMAIL NOTIFICATION', 'managx' ); ?></h3>
+        <p><?php _e( 'Select when do you want to get notified via email', 'managx' ); ?></p>
+        <?php $notification_value = get_option( 'email_notifications_settings' ); ?>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_1]" value="1" <?php checked( isset( $notification_value['option_1'] ) ); ?>><?php _e( 'If someone mentions me anywhere', 'managx' ); ?></label></div>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_2]" value="2" <?php checked( isset( $notification_value['option_2'] ) ); ?>><?php _e( 'New comments on my discussion or task', 'managx' ); ?></label></div>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_3]" value="3" <?php checked( isset( $notification_value['option_3'] ) ); ?>><?php _e( 'Due of tasks assign to me', 'managx' ); ?></label></div>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_4]" value="4" <?php checked( isset( $notification_value['option_4'] ) ); ?>><?php _e( 'Someone completes task assigned by me', 'managx' ); ?></label></div>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_5]" value="5" <?php checked( isset( $notification_value['option_5'] ) ); ?>><?php _e( 'Someone starts new discussion', 'managx' ); ?></label></div>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_6]" value="6" <?php checked( isset( $notification_value['option_6'] ) ); ?>><?php _e( 'New comment on my project', 'managx' ); ?></label></div>
+        <div><label><input type="checkbox" name="email_notifications_settings[option_7]" value="7" <?php checked( isset( $notification_value['option_7'] ) ); ?>><?php _e( 'New task on my project', 'managx' ); ?></label></div>
+        <?php
     }
 
     /**
