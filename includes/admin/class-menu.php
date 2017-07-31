@@ -152,8 +152,8 @@ class Managx_Admin_Menu {
         ?>
         <h3><?php _e( 'DESKTOP NOTIFICATION', 'managx' ); ?></h3>
         <p><?php _e( 'Get notified everytime when there is a new activity', 'managx' ); ?></p>
-        <label><input type="radio" name="notifications_settings" value="1" <?php checked( 1, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified with every activities', 'managx' ); ?></label>
-        <label><input type="radio" name="notifications_settings" value="2" <?php checked( 2, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified only with your activities', 'managx' ); ?></label>
+        <div><label><input type="radio" name="notifications_settings" value="1" <?php checked( 1, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified with every activities', 'managx' ); ?></label></div>
+        <div><label><input type="radio" name="notifications_settings" value="2" <?php checked( 2, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified only with your activities', 'managx' ); ?></label></div>
         <?php
     }
 
