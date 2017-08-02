@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Handle all function of project related.  
+ * Handle all function of project related.
  */
 class Managx_Admin_Projects {
 
@@ -14,13 +14,13 @@ class Managx_Admin_Projects {
      *
      * @since v0.0.1
      *
-     * @param int offset  
-     * @param int limit 
-     * @param string where 
-     * 
+     * @param int offset
+     * @param int limit
+     * @param string where
+     *
      * @return void
      */
-    function get_projets( $offset = 0, $limit = 20, $where = null ) {
+    function get_projects( $offset = 0, $limit = 20, $where = null ) {
         global $wpdb;
         $table = $wpdb->prefix . 'managx_projects';
         $sql   = "SELECT * FROM {$table} ";
@@ -49,29 +49,29 @@ class Managx_Admin_Projects {
         $table   = $wpdb->prefix . 'managx_projects';
         $sql     = "SELECT * FROM `{$table}`  WHERE `id` = {$project_id} ";
         $project = $wpdb->get_row( $sql );
-         
+
         return $project;
     }
 
     /**
      * Create project
-     * 
+     *
      * @since v0.0.1
-     * 
+     *
      * @param array $projet_data
      *
      * @return int project id on succes, false on failure
      */
     function create_project( $projet_data ) {
 
-        // save to DB 
+        // save to DB
         global $wpdb;
         $table   = $wpdb->prefix . 'managx_projects';
         $wpdb->insert( $table, $projet_data );
         $pid     = $wpdb->insert_id;
-        // return project_object 
+        // return project_object
         $project = $this->get_project( $pid );
-        
+
         return $project;
     }
 
@@ -86,7 +86,7 @@ class Managx_Admin_Projects {
      * @return void
      */
     function update_projct( $project_id, $data ) {
-        
+
     }
 
     /**
@@ -99,7 +99,7 @@ class Managx_Admin_Projects {
      * @return true on success, false on failure
      */
     function update_project_meta( $project_id, $meta_data ) {
-        
+
     }
 
     /**
@@ -113,7 +113,7 @@ class Managx_Admin_Projects {
      * @return true on success, false on failure
      */
     function update_privacy( $project_id, $data ) {
-        
+
     }
 
     /**
@@ -126,7 +126,7 @@ class Managx_Admin_Projects {
      * @return true on success false on failure
      */
     function update_project_status( $project_id ) {
-        
+
     }
 
     /**
@@ -139,7 +139,7 @@ class Managx_Admin_Projects {
      * @return true on success, false on failure
      */
     function delete_project( $project_id ) {
-        
+
     }
 
 }

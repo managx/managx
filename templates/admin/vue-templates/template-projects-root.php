@@ -107,3 +107,5 @@
 <?php
 managx_load_template( 'admin/vue-templates/template-project.php' );
 managx_load_template( 'admin/vue-templates/template-project-form.php' );
+managx_load_template( 'admin/vue-templates/template-single-project.php' );
+managx_load_template( 'admin/vue-templates/template-single-project-tasks.php' );

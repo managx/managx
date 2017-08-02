@@ -105,7 +105,7 @@ class Managx_Admin_Menu {
     }
 
     public function settings_page()
-    {        
+    {
         managx_load_template( 'admin/settings.php' );
     }
 
@@ -120,15 +120,15 @@ class Managx_Admin_Menu {
         //setting name, display name, callback to print form element, page in which field is displayed, section to which it belongs.
         //last field section is optional.
         add_settings_field( 'time-frame-field', __( 'Time Frame', 'managx' ), array( $this, 'display_time_frame_field' ), 'settings', 'managx-settings-portion1' );
-        
+
         // Desktop Notification section
         register_setting( 'managx-settings', 'notifications_settings');
-        
+
         add_settings_field( 'notifications-settings-fields', __( 'Notifications', 'managx' ), array( $this, 'display_notifications_settings' ), 'settings', 'managx-settings-portion1' );
 
         // Email Notification section
         register_setting( 'managx-settings', 'email_notifications_settings');
-        
+
         add_settings_field( 'email-notifications-settings-fields', __( 'Email Notifications', 'managx' ), array( $this, 'display_email_notifications_settings' ), 'settings', 'managx-settings-portion1' );
     }
 
@@ -216,6 +216,8 @@ class Managx_Admin_Menu {
             'i18n' => $i18n,
             'project_home' => home_url().'/wp-admin/admin.php?page=managx',
         );
+
+        wp_enqueue_script( 'underscore' );
 
         wp_enqueue_script( 'managx-vue', MANAGX_ASSETS . '/js/vendor/vue' . $suffix . '.js', array(), MANAGX_VERSION, true );
         wp_enqueue_script( 'managx-scripts', MANAGX_ASSETS . '/js/managx' . $suffix . '.js', array( 'managx-vue' ), MANAGX_VERSION, true );
