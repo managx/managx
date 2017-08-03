@@ -1,6 +1,5 @@
 <script type="text/x-template" id="tmpl-managx-single-project">
     <div>
-
         <div class="container-fluid">
             <!--breadcrumb-->
             <div class="row pt25 pb25">
@@ -17,6 +16,7 @@
                 <div class="col-sm-12 pb30">
                     <ul class="horizontal-ul conversation_tabs">
                         <li><router-link v-bind:to="{ path: '/projects/' + project.id + '/details' }"><?php _e( 'Details', 'managx' ); ?></router-link></li>
+                        <li><router-link v-bind:to="{ path: '/projects/' + project.id + '/lists' }"><?php _e( 'Lists', 'managx' ); ?></router-link></li>
                         <li><router-link v-bind:to="{ path: '/projects/' + project.id + '/tasks' }"><?php _e( 'Tasks', 'managx' ); ?></router-link></li>
                     </ul>
                 </div>

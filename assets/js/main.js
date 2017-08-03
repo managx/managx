@@ -63,7 +63,8 @@ const routes = [
     { path: '/projects/create', component: ProjectForm },
     { path: '/projects/:id', redirect: '/projects/:id/details' },
     { path: '/projects/:id/details', component: SingleProject },
-    { path: '/projects/:id/tasks', component: SingleProjectTasks }
+    { path: '/projects/:id/tasks', component: SingleProjectTasks },
+    { path: '/projects/:id/lists', component: TaskListsRoot }
 ];
 
 const router = new VueRouter({
