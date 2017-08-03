@@ -24,7 +24,12 @@ Vue.component('project', Project);
 
 // Project Form Component
 import ProjectForm from './components/project-form';
-// Vue.component('project-form', ProjectForm);
+
+// Single Project Component
+import SingleProject from './components/single-project';
+
+// Single Project Tasks Component
+import SingleProjectTasks from './components/single-project-tasks';
 
 // Main List Component
 
@@ -52,10 +57,13 @@ import UsersList from './components/users';
 Vue.component('users-list', UsersList);
 
 const routes = [
-    { path: '/', component: ProjectsRoot },
+    { path: '/', redirect: '/projects' },
+    { path: '/projects', component: ProjectsRoot },
     { path: '/settings', component: Settings },
     { path: '/projects/create', component: ProjectForm },
-    { path: '/projects/:projectID/lists', component: TaskListsRoot }
+    { path: '/projects/:id', redirect: '/projects/:id/details' },
+    { path: '/projects/:id/details', component: SingleProject },
+    { path: '/projects/:id/tasks', component: SingleProjectTasks }
 ];
 
 const router = new VueRouter({

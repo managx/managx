@@ -2,14 +2,21 @@ import Vuex from 'vuex';
 
 export default new Vuex.Store({
     state: {
+        project: {},
         projects: []
     },
     getters: {
+        project: state => {
+            return state.project;
+        },
         projects: state => {
             return state.projects;
         }
     },
     mutations: {
+        getProject (state, {project}) {
+            state.project = project;
+        },
         getProjects (state, {projects}) {
             state.projects = projects;
         },
@@ -18,6 +25,24 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        getProject (context, {id}) {
+            var data = {
+                'action': 'get_project',
+                'id': id
+            };
+
+            jQuery.ajax({
+                'data': data,
+                'type': 'get',
+                'url': ajaxurl,
+                success: function (response) {
+                    if (response.success) {
+                        context.commit('getProject', {project: response.data});
+                    }
+                }
+            });
+
+        },
         getProjects (context, {limit, offset}) {
             var data = {
                 'action': 'get_projects',

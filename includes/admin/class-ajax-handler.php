@@ -4,6 +4,7 @@ class Managx_Admin_Ajax_Handler {
 
     public function __construct() {
         add_action( 'wp_ajax_create_project', array( $this, 'create_project' ) );
+        add_action( 'wp_ajax_get_project', array( $this, 'get_project' ) );
         add_action( 'wp_ajax_get_projects', array( $this, 'get_projects' ) );
 
         //lists
@@ -14,11 +15,22 @@ class Managx_Admin_Ajax_Handler {
         add_action( 'wp_ajax_get_tasks', array( $this, 'get_tasks' ) );
     }
 
+    public function get_project() {
+        $project_class = new Managx_Admin_Projects();
+        $project       = $project_class->get_project( $_GET['id'] );
+
+        if ( ! $project ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( $project );
+    }
+
     public function get_projects() {
         $offset        = $_GET[ 'offset' ];
         $limit         = $_GET[ 'limit' ];
         $project_class = new Managx_Admin_Projects();
-        $projects      = $project_class->get_projets( $offset, $limit );
+        $projects      = $project_class->get_projects( $offset, $limit );
 
         if ( ! $projects ) {
             wp_send_json_error();
