@@ -31,25 +31,8 @@ import SingleProject from './components/single-project';
 // Single Project Tasks Component
 import SingleProjectTasks from './components/single-project-tasks';
 
-// Main List Component
-
-
-
-// Task Lists Component
-import TaskListsRoot from './components/task-lists-root';
-//Vue.component('task-lists-root', TaskListsRoot);
-
-// Task Lists Component
-import TaskListsForm from './components/task-lists-form';
-Vue.component('task-lists-form', TaskListsForm);
-
-//taskList
-import TaskList from './components/task-list';
-Vue.component('task-list', TaskList);
-
-// Tasks Component
-import TasksRoot from './components/tasks-root';
-Vue.component('tasks-root', TasksRoot);
+// Single Project Tasks Component
+import SingleProjectTaskLists from './components/single-project-task-lists';
 
 // All WP User List Component
 import UsersList from './components/users';
@@ -64,7 +47,7 @@ const routes = [
     { path: '/projects/:id', redirect: '/projects/:id/details' },
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
-    { path: '/projects/:id/lists', component: TaskListsRoot }
+    { path: '/projects/:id/lists', component: SingleProjectTaskLists }
 ];
 
 const router = new VueRouter({

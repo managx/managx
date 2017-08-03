@@ -27,8 +27,8 @@ class Managx_Admin_Ajax_Handler {
     }
 
     public function get_projects() {
-        $offset        = $_GET[ 'offset' ];
-        $limit         = $_GET[ 'limit' ];
+        $offset        = $_GET['offset'];
+        $limit         = $_GET['limit'];
         $project_class = new Managx_Admin_Projects();
         $projects      = $project_class->get_projects( $offset, $limit );
 
@@ -42,7 +42,7 @@ class Managx_Admin_Ajax_Handler {
     public function create_project() {
         $cuid         = wp_get_current_user()->ID;
         $project_data = array();
-        parse_str( $_POST[ 'formData' ], $project_data );
+        parse_str( $_POST['formData'], $project_data );
 
         $project_data['create_by']    = $cuid;
         $project_data['project_date'] = current_time( 'mysql' );
@@ -61,29 +61,24 @@ class Managx_Admin_Ajax_Handler {
 
     //lists
     public function get_lists() {
-        $offset                 = $_GET[ 'offset' ];
-        $limit                  = $_GET[ 'limit' ];
-        $response[ 'lists' ] = array();
-        $response[ 'success' ]  = false;
-        $list_class          = new Managx_Admin_Lists();
+        $offset     = $_GET['offset'];
+        $limit      = $_GET['limit'];
+        $project_id = $_GET['project_id'];
+        $list_class = new Managx_Admin_Lists();
+        $lists      = $list_class->get_lists( $project_id, $offset, $limit );
 
-        //custom
-        $project_id = 1;
-
-        $lists               = $list_class->get_lists( $project_id, $offset, $limit );
-        if ( $lists ) {
-
-            $response[ 'lists' ] = (object) $lists;
-            $response[ 'success' ]  = true;
+        if ( ! $lists ) {
+            wp_send_json_error();
         }
-        wp_send_json( $response );
+
+        wp_send_json_success( $lists );
     }
 
     //create list
     public function create_list() {
         $cuid         = wp_get_current_user()->ID;
         $list_data = array();
-        parse_str( $_POST[ 'formData' ], $list_data );
+        parse_str( $_POST['formData'], $list_data );
 
         $list_data['create_by']    = $cuid;
         $list_data['list_date'] = current_time( 'mysql' );
@@ -102,10 +97,10 @@ class Managx_Admin_Ajax_Handler {
 
     //tasks
     public function get_tasks() {
-        $offset                 = $_GET[ 'offset' ];
-        $limit                  = $_GET[ 'limit' ];
-        $response[ 'tasks' ] = array();
-        $response[ 'success' ]  = false;
+        $offset                 = $_GET['offset'];
+        $limit                  = $_GET['limit'];
+        $response['tasks'] = array();
+        $response['success']  = false;
         $task_class          = new Managx_Admin_Tasks();
 
         //custom
@@ -114,8 +109,8 @@ class Managx_Admin_Ajax_Handler {
         $tasks               = $task_class->get_tasks( $list_id, $offset, $limit );
         if ( $tasks ) {
 
-            $response[ 'tasks' ] = (object) $tasks;
-            $response[ 'success' ]  = true;
+            $response['tasks'] = (object) $tasks;
+            $response['success']  = true;
         }
         wp_send_json( $response );
     }

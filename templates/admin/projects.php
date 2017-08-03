@@ -8,4 +8,3 @@
 
 <?php
 managx_load_template( 'admin/vue-templates/template-projects-root.php' );
-managx_load_template( 'admin/vue-templates/template-task-lists-root.php' );

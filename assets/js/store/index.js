@@ -3,7 +3,8 @@ import Vuex from 'vuex';
 export default new Vuex.Store({
     state: {
         project: {},
-        projects: []
+        projects: [],
+        taskLists: []
     },
     getters: {
         project: state => {
@@ -11,6 +12,9 @@ export default new Vuex.Store({
         },
         projects: state => {
             return state.projects;
+        },
+        taskLists: state => {
+            return state.taskLists;
         }
     },
     mutations: {
@@ -22,7 +26,10 @@ export default new Vuex.Store({
         },
         createProject (state, {project}) {
             state.projects.push(project);
-        }
+        },
+        getTaskLists (state, {taskLists}) {
+            state.taskLists = taskLists;
+        },
     },
     actions: {
         getProject (context, {id}) {
@@ -96,29 +103,21 @@ export default new Vuex.Store({
                 }
             });
         },
-        getLists (context, {limit, offset}) {
+        getTaskLists (context, {projectId, limit, offset}) {
             var data = {
                 'action': 'get_lists',
+                'project_id': projectId,
                 'limit': limit,
                 'offset': offset,
-            }, _this = this;
+            };
 
             jQuery.ajax({
                 'data': data,
                 'type': 'get',
                 'url': ajaxurl,
-                success: function (data) {
-                    if (data.success == true) {
-
-                        var lists = [];
-                        for (var key in data.lists) {
-
-                            lists.push(data.lists[key]);
-
-                        }
-                        //
-                        _this.lists = lists;
-
+                success: function (response) {
+                    if (response.success) {
+                        context.commit('getTaskLists', {taskLists: response.data});
                     }
                 }
             });
