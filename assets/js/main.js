@@ -42,17 +42,17 @@ Vue.component('users-list', UsersList);
 const routes = [
     { path: '/', redirect: '/projects' },
     { path: '/projects', component: ProjectsRoot },
-    { path: '/settings', component: Settings },
     { path: '/projects/create', component: ProjectForm },
     { path: '/projects/:id', redirect: '/projects/:id/details' },
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
-    { path: '/projects/:id/lists', component: SingleProjectTaskLists }
+    { path: '/projects/:id/lists', component: SingleProjectTaskLists },
+    { path: '/projects/:id/settings', component: Settings }
 ];
 
 const router = new VueRouter({
     routes,
-    'linkExactActiveClass': 'active'
+    'linkActiveClass': 'active'
 });
 
 var managxApp = new Vue({
@@ -61,30 +61,11 @@ var managxApp = new Vue({
     el: '#managx-app',
     data() {
         return {
-            msg: 'Hello Managx!',
-            showCreateForm: false,
-            projects: [],
-            //
-            lists: [],
-            //
-            tasks: [],
+            msg: 'Hello Managx!'
         }
     },
     created() {
-
     },
     methods: {
-        //get projects
-        eventGetProjects(res) {
-            this.projects = res;
-        },
-        //get lists
-        eventGetLists(res) {
-            this.lists = res;
-        },
-        //get tasks
-        eventGetTasks(res) {
-            this.tasks = res;
-        }
     }
 });

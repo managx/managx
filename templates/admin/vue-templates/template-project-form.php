@@ -1,12 +1,13 @@
 <script type="text/x-template" id="tmpl-managx-project-form">
     <div>
-        <h2>Create Project</h2>
-        <br/>
 
         <div class="container-fluid">
+            <div class="col-md-12">
+                <br/>
+                <h2>Create Project</h2>
+                <br/>
 
-            <div class="col-md-12 col-sm-12">
-                <div class="col-sm-6 create-project-form-container">
+                <div class="col-md-12 create-project-form-container">
                     <form id="create-project-form">
                         <div class="form-inner-row">
                             <label class="form-inner-lbl">Project Name</label>
