@@ -1,5 +1,5 @@
 export default {
-    template: '#tmpl-managx-project-form',
+    template: '#tmpl-managx-lists-form',
     data () {
         return {
             project: {},
@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         create () {
-            this.$store.dispatch('createProject', {formSelector: '#create-project-form'});
+            this.$store.dispatch('createList', {formSelector: '#create-list-form'});
             this.$router.push('/');
         },
         cancel () {

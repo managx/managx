@@ -33,16 +33,16 @@
 
                 <div class="col-sm-6 create_project_form_container" v-if='showCreateForm'>
                     <a href="JavaScript:void(0)" @click.prevent="showCreateForm =false" class="btn btn-danger btn-xs mt15 pull-right"><span class="fa fa-times-circle">x</span></a>
-                    <project-form />
+                    <!--<project-form />-->
                 </div>
             </div>
 
         </div>
-        <!--project lists-->
+        <!--lists-->
         <div class="row pb25 mr0">
             <task-list v-for="list in lists " :list="list" :key="list.id" />
         </div>
-        <!--project list ends-->
+        <!--list ends-->
     </div>
     <div class="container-fluid">
         <div class="row mr0">

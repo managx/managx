@@ -1,5 +1,5 @@
-<script type="text/x-template" id="tmpl-managx-project-form">
-    <form id="create-project-form">
+<script type="text/x-template" id="tmpl-managx-lists-form">
+    <form id="create-list-form">
         <div id="create-project-form-id">
             <h2 class="mt0">Project Form</h2>
 
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="form-inner-row">
-                    <input type="button" class="btn btn-primary mt10" value="Submit" name="create_project" @click="create_project" />
+                    <input type="button" class="btn btn-primary mt10" value="Submit" name="create" @click="create" />
                 </div>
             </div>
         </div>

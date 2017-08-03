@@ -8,6 +8,7 @@ class Managx_Admin_Ajax_Handler {
 
         //lists
         add_action( 'wp_ajax_get_lists', array( $this, 'get_lists' ) );
+        add_action( 'wp_ajax_create_list', array( $this, 'create_list' ) );
 
         //tasks
         add_action( 'wp_ajax_get_tasks', array( $this, 'get_tasks' ) );
@@ -65,6 +66,28 @@ class Managx_Admin_Ajax_Handler {
         }
         wp_send_json( $response );
     }
+
+    //create list
+    public function create_list() {
+        $cuid         = wp_get_current_user()->ID;
+        $list_data = array();
+        parse_str( $_POST[ 'formData' ], $list_data );
+
+        $list_data['create_by']    = $cuid;
+        $list_data['list_date'] = current_time( 'mysql' );
+        $list_data['status']       = 1;
+
+        $list_class = new Managx_Admin_Lists();
+
+        $list = $list_class->create_list(  $list_data );
+
+        if ( ! $list ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( $list );
+    }
+
     //tasks
     public function get_tasks() {
         $offset                 = $_GET[ 'offset' ];

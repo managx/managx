@@ -53,6 +53,23 @@ export default new Vuex.Store({
                     }
                 }
             });
-        }
+        },
+        createList (context, {formSelector}) {
+            var data = {
+                'action': 'create_list',
+                'formData': jQuery(formSelector).serialize(),
+            };
+
+            jQuery.ajax({
+                data: data,
+                type: 'post',
+                url: ajaxurl,
+                success: function (response) {
+                    if (response.success) {
+                        context.commit('createList', {list: response.data});
+                    }
+                }
+            });
+        },
     }
 });

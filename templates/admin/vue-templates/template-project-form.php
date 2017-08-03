@@ -24,6 +24,7 @@
                         </div>
                         <div class="form-inner-row">
                             <input type="button" class="btn btn-primary mt10" value="Create" @click.prevent="create" />
+                            <input type="button" class="btn btn-default mt10" value="<?php _e('Cancel','managx'); ?>" @click.prevent="cancel" />
                         </div>
                     </form>
                 </div>

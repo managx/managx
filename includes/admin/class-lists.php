@@ -59,7 +59,7 @@ class Managx_Admin_Lists {
      *
      * @return int list id on success, false on failure
      */
-    function create_list( $project_id ) {
+    function create_list( $project_id, $data ) {
         
     }
 

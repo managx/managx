@@ -27,12 +27,20 @@ import ProjectForm from './components/project-form';
 // Vue.component('project-form', ProjectForm);
 
 // Main List Component
-import TaskList from './components/task-list';
-Vue.component('task-list', TaskList);
+
+
 
 // Task Lists Component
 import TaskListsRoot from './components/task-lists-root';
-Vue.component('task-lists-root', TaskListsRoot);
+//Vue.component('task-lists-root', TaskListsRoot);
+
+// Task Lists Component
+import TaskListsForm from './components/task-lists-form';
+Vue.component('task-lists-form', TaskListsForm);
+
+//taskList
+import TaskList from './components/task-list';
+Vue.component('task-list', TaskList);
 
 // Tasks Component
 import TasksRoot from './components/tasks-root';
@@ -46,7 +54,8 @@ Vue.component('users-list', UsersList);
 const routes = [
     { path: '/', component: ProjectsRoot },
     { path: '/settings', component: Settings },
-    { path: '/projects/create', component: ProjectForm }
+    { path: '/projects/create', component: ProjectForm },
+    { path: '/projects/:projectID/lists', component: TaskListsRoot }
 ];
 
 const router = new VueRouter({

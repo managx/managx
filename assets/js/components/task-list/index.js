@@ -1,6 +1,6 @@
 export default {
     template: '#tmpl-managx-task-list',
-    props: ['task'],
+    props: ['list'],
     data() {
         return {
 

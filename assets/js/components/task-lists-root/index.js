@@ -2,7 +2,8 @@ export default {
     template: '#tmpl-managx-task-lists-root',
     data() {
         return {
-
+            showCreateForm : false,
+            lists : []
         }
     },
     methods: {
@@ -27,13 +28,15 @@ export default {
 
                         }
                         //
-                        _this.$emit('event-get-lists',lists);
+                        _this.lists = lists;
+
                     }
                 }
             });
+            //this.$store.dispatch('getLists', {limit, offset});
         }
     },
-    mounted () {
+    created () {
         this.getLists(20,0);
     },
     method: {
