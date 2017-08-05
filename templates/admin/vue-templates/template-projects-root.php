@@ -3,14 +3,14 @@
         <div class="container-fluid">
             <div class="row pt25 pb25">
                 <div class="col-sm-6">
-                    <router-link class="btn create_button" to="/projects/create">Create Project</router-link>
+                    <router-link class="btn create_button" to="/projects/create"><?php _e( 'Add New Project', 'managx' ); ?></router-link>
                 </div>
                 <div class="col-sm-6 text-right project-sort-option font2">
-                    <label>Sort by :</label>
+                    <label><?php _e( 'Sort by:', 'managx' ); ?></label>
                     <ul class="pull-right">
-                        <li><a class="active" href="#">Last Modified</a></li>
-                        <li><a href="#">Alphabetic ( A - Z )</a></li>
-                        <li><a href="#">Deadline</a></li>
+                        <li><a href="#" @click.prevent="sortBy('updated_at');"><?php _e( 'Last Modified', 'managx' ); ?></a></li>
+                        <li><a href="#" @click.prevent="sortBy('name');"><?php _e( 'Alphabetic ( A - Z )', 'managx' ); ?></a></li>
+                        <li><a href="#" @click.prevent="sortBy('end_date');"><?php _e( 'Deadline', 'managx' ); ?></a></li>
                     </ul>
                 </div>
             </div>
