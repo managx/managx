@@ -26,8 +26,8 @@
             <div class="row mr0">
                 <div class="col-md-12">
                     <div class="container-fluid">
-                        <router-link class="btn create_button" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }">Add New Task List</router-link>
 
+                        <router-link class="btn create_button" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }">Add New Task List</router-link>
                         <ul>
                             <li v-for="list in taskLists">List</li>
                         </ul>
