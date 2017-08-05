@@ -1,6 +1,5 @@
 <div class="wrap managx-wrap managx-container">
-
-    <div class="container-fluid pl0">
+    <div class="container-fluid pl0 managx-global-settings">
         <div class="row mr0 ml0">
             <div class="col-sm-12 pl0">
                 <h1 class="mb25"><?php _e( 'Project Settings', 'managx' ) ;?></h1>
@@ -14,5 +13,4 @@
             </div>
         </div>
     </div>
-
 </div>
