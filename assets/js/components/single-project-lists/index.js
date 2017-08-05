@@ -1,5 +1,5 @@
 export default {
-    template: '#tmpl-managx-single-project-task-lists',
+    template: '#tmpl-managx-single-project-lists',
     data () {
         return {
         }
@@ -14,15 +14,15 @@ export default {
     methods: {
         fetchData () {
             this.$store.dispatch('getProject', {id: this.$route.params.id});
-            this.$store.dispatch('getTaskLists', {projectId: this.$route.params.id, limit: 20, offset: 0});
+            this.$store.dispatch('getLists', {projectId: this.$route.params.id, limit: 20, offset: 0});
         }
     },
     computed: {
         project () {
             return this.$store.getters.project;
         },
-        taskLists () {
-            return this.$store.getters.taskLists;
+        lists () {
+            return this.$store.getters.lists;
         }
     }
 }

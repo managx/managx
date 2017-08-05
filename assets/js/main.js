@@ -31,8 +31,8 @@ import SingleProject from './components/single-project';
 // Single Project Tasks Component
 import SingleProjectTasks from './components/single-project-tasks';
 
-// Single Project Tasks Component
-import SingleProjectTaskLists from './components/single-project-task-lists';
+// Single Project Lists Component
+import SingleProjectLists from './components/single-project-lists';
 
 // All WP User List Component
 import UsersList from './components/users';
@@ -46,7 +46,7 @@ const routes = [
     { path: '/projects/:id', redirect: '/projects/:id/details' },
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
-    { path: '/projects/:id/lists', component: SingleProjectTaskLists },
+    { path: '/projects/:id/lists', component: SingleProjectLists },
     { path: '/projects/:id/settings', component: Settings }
 ];
 

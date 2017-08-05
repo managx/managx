@@ -95,4 +95,4 @@ managx_load_template( 'admin/vue-templates/template-project-form.php' );
 
 managx_load_template( 'admin/vue-templates/template-single-project.php' );
 managx_load_template( 'admin/vue-templates/template-single-project-tasks.php' );
-managx_load_template( 'admin/vue-templates/template-single-project-task-lists.php' );
+managx_load_template( 'admin/vue-templates/template-single-project-lists.php' );
