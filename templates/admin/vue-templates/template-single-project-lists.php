@@ -1,4 +1,4 @@
-<script type="text/x-template" id="tmpl-managx-single-project-task-lists">
+<script type="text/x-template" id="tmpl-managx-single-project-lists">
     <div>
 
         <div class="container-fluid">
@@ -29,7 +29,7 @@
                         <router-link class="btn create_button" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }">Add New Task List</router-link>
 
                         <ul>
-                            <li v-for="list in taskLists">List</li>
+                            <li v-for="list in lists">List</li>
                         </ul>
                     </div>
                 </div>
