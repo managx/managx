@@ -38,6 +38,13 @@ import SingleProjectLists from './components/single-project-lists';
 // Single Project Lists Component
 import ListForm from './components/list-form';
 
+// Single Project Lists Component
+import List from './components/list';
+Vue.component('list', List);
+
+// Single Project Lists Component
+import SingleList from './components/single-list';
+
 // All WP User List Component
 import UsersList from './components/users';
 
@@ -51,6 +58,7 @@ const routes = [
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
     { path: '/projects/:id/lists', component: SingleProjectLists },
+    { path: '/projects/:id/lists/:listId/tasks', component: SingleList },
     { path: '/projects/:id/lists/create', component: ListForm },
     { path: '/projects/:id/settings', component: Settings },
 

@@ -1,8 +1,7 @@
 export default {
-    template: '#tmpl-managx-single-project-lists',
+    template: '#tmpl-managx-single-list',
     data () {
         return {
-            viewType : 'grid', //other values : list
         }
     },
     created () {
@@ -14,8 +13,9 @@ export default {
     },
     methods: {
         fetchData () {
-            this.$store.dispatch('getProject', {id: this.$route.params.id});
-            this.$store.dispatch('getLists', {projectId: this.$route.params.id, limit: 20, offset: 0});
+            //this.$store.dispatch('getProject', {id: this.$route.params.id});
+            this.$store.dispatch('getList', {listId: this.$route.params.listId});
+            this.$store.dispatch('getTasks', {listId: this.$route.params.listId, limit: 20, offset: 0});
         }
     },
     computed: {
@@ -24,6 +24,9 @@ export default {
         },
         lists () {
             return this.$store.getters.lists;
+        },
+        tasks () {
+            return this.$store.getters.tasks;
         }
     }
 }

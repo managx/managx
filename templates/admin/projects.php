@@ -9,4 +9,7 @@
 <?php
 managx_load_template( 'admin/vue-templates/template-projects-root.php' );
 
+//list
 managx_load_template( 'admin/vue-templates/template-list-form.php' );
+managx_load_template( 'admin/vue-templates/template-list.php' );
+managx_load_template( 'admin/vue-templates/template-single-list.php' );

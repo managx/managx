@@ -1,6 +1,7 @@
-<script type="text/x-template" id="tmpl-managx-single-project-lists">
-    <div>
+<script type="text/x-template" id="tmpl-managx-single-list">
 
+    <div>
+        {{ tasks | json }}
         <div class="container-fluid">
             <!--breadcrumb-->
             <div class="row pt25 pb25">
@@ -29,9 +30,22 @@
                         <router-link class="btn create_button mb30" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }">Add New Task List</router-link>
                         <div class="row">
                             <div class="col-sm-3 mb30"
-                                 :class="{ 'col-sm-12' : viewType == 'grid' ? true : false }"
                                  v-for="list in lists">
-                                <list :list="list" :projectId="project.id"></list>
+                                <div class="list-wrapper">
+                                    <h3><a href="javascript:">{{ list.name }}</a></h3>
+                                    <div class="each-task">
+                                        <div class="task">New Series Writing</div>
+                                        <span>due on 20 september, 2015</span>
+                                    </div>
+                                    <div class="each-task">
+                                        <div class="task">New Series Writing</div>
+                                        <span>due on 20 september, 2015</span>
+                                    </div>
+                                    <div class="each-task">
+                                        <div class="task">New Series Writing</div>
+                                        <span>due on 20 september, 2015</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

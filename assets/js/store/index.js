@@ -4,7 +4,9 @@ export default new Vuex.Store({
     state: {
         project: {},
         projects: [],
-        lists: []
+        lists: [],
+        list : {},
+        tasks : []
     },
     getters: {
         project: state => {
@@ -15,7 +17,10 @@ export default new Vuex.Store({
         },
         lists: state => {
             return state.lists;
-        }
+        },
+        tasks: state => {
+            return state.tasks;
+        },
     },
     mutations: {
         getProject (state, {project}) {
@@ -30,13 +35,23 @@ export default new Vuex.Store({
         getLists (state, {lists}) {
             state.lists = lists;
         },
-
+        getList (state, {list}) {
+            state.list = list;
+        },
+        //task
+        getTasks (state, {tasks}) {
+            state.tasks = tasks;
+        },
         sortBy (state, {type, sortKey, reverse}) {
             state[type] = _.sortBy(state[type], sortKey, reverse ? 'desc' : 'asc');
 
             if (reverse) {
                 state[type].reverse();
             }
+        },
+        //lists
+        createList (state, {list}) {
+            state.lists.push(list);
         }
     },
     actions: {
@@ -94,6 +109,8 @@ export default new Vuex.Store({
                 }
             });
         },
+
+        //list
         createList (context, {formSelector}) {
             var data = {
                 'action': 'create_list',
@@ -142,6 +159,45 @@ export default new Vuex.Store({
                 }
             });
         },
+        getList (context, {listId}) {
+            var data = {
+                'action': 'get_list',
+                'list_id': listId
+            };
+
+            jQuery.ajax({
+                'data': data,
+                'type': 'get',
+                'url': ajaxurl,
+                success: function (response) {
+                    if (response.success) {
+                        context.commit('getList', {list: response.data});
+                    }
+                }
+            });
+        },
+
+        //task
+        getTasks (context, {listId, limit, offset}) {
+            var data = {
+                'action': 'get_lists',
+                'list_id': listId,
+                'limit': limit,
+                'offset': offset,
+            };
+
+            jQuery.ajax({
+                'data': data,
+                'type': 'get',
+                'url': ajaxurl,
+                success: function (response) {
+                    if (response.success) {
+                        context.commit('getTasks', {lists: response.data});
+                    }
+                }
+            });
+        },
+
         sortBy (context, {type, sortKey, reverse}) {
             context.commit('sortBy', {type, sortKey, reverse});
         }

@@ -9,6 +9,7 @@ class Managx_Admin_Ajax_Handler {
 
         //lists
         add_action( 'wp_ajax_get_lists', array( $this, 'get_lists' ) );
+        add_action( 'wp_ajax_get_list', array( $this, 'get_list' ) );
         add_action( 'wp_ajax_create_list', array( $this, 'create_list' ) );
 
         //tasks
@@ -72,6 +73,17 @@ class Managx_Admin_Ajax_Handler {
         }
 
         wp_send_json_success( $lists );
+    }
+
+    public function get_list() {
+        $list_class = new Managx_Admin_Lists();
+        $list = $list_class->get_list( $_GET['id'] );
+
+        if ( ! $list ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( $list );
     }
 
     //create list
