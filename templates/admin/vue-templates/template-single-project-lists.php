@@ -1,15 +1,13 @@
 <script type="text/x-template" id="tmpl-managx-single-project-lists">
     <div>
 
-        {{ lists | json }}
         <div class="container-fluid">
             <!--breadcrumb-->
             <div class="row pt25 pb25">
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li><router-link to="/"><?php _e( 'Projects', 'managx' ); ?></router-link></li>
-                        <li><router-link v-bind:to="{ path: '/projects/' + project.id }">{{ project.name }}</router-link></li>
-                        <li class="active">Details</li>
+                        <li>{{ project.name }}</li>
                     </ol>
                 </div>
             </div>
