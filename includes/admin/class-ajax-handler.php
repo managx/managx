@@ -45,9 +45,9 @@ class Managx_Admin_Ajax_Handler {
         $project_data = array();
         parse_str( $_POST['formData'], $project_data );
 
-        $project_data['create_by']    = $cuid;
-        $project_data['project_date'] = current_time( 'mysql' );
-        $project_data['status']       = 1;
+        $project_data['created_by'] = $cuid;
+        $project_data['start_date'] = current_time( 'mysql' );
+        $project_data['status']     = 1;
 
         $project_class = new Managx_Admin_Projects();
 
