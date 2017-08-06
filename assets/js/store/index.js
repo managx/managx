@@ -200,7 +200,6 @@ export default new Vuex.Store({
                 'type': 'get',
                 'url': ajaxurl,
                 success: function (response) {
-                    /*console.log(response);*/
                     if (response.success) {
                         context.commit('getTasks', {tasks: response.data});
                     }

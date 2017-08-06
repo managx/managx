@@ -29,7 +29,7 @@
             <div class="row mr0">
                 <div class="col-md-12">
                     <div class="container-fluid">
-                        <router-link class="btn create_button mb30" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }">Add New Task List</router-link>
+                        <router-link class="btn create_button mb30" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }"><?php _e( 'Add New Task', 'managx' ); ?></router-link>
                         <div class="row">
                             <div class="col-sm-3 mb30"
                                  v-for="task in tasks">

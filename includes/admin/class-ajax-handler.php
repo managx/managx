@@ -109,6 +109,7 @@ class Managx_Admin_Ajax_Handler {
 
     //tasks
     public function get_tasks() {
+
         $offset                 = $_GET['offset'];
         $limit                  = $_GET['limit'];
         $response['tasks'] = array();
@@ -116,9 +117,10 @@ class Managx_Admin_Ajax_Handler {
         $task_class          = new Managx_Admin_Tasks();
 
         //custom
-        $list_id = 1;
+        $list_id = $_GET['list_id'];
 
         $tasks               = $task_class->get_tasks( $list_id, $offset, $limit );
+
 
         if ( $tasks ) {
 

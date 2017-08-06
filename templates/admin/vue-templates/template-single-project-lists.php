@@ -1,6 +1,7 @@
 <script type="text/x-template" id="tmpl-managx-single-project-lists">
     <div>
 
+        {{ lists | json }}
         <div class="container-fluid">
             <!--breadcrumb-->
             <div class="row pt25 pb25">
