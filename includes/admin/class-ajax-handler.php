@@ -120,6 +120,7 @@ class Managx_Admin_Ajax_Handler {
         $list_id = 1;
 
         $tasks               = $task_class->get_tasks( $list_id, $offset, $limit );
+
         if ( $tasks ) {
 
             $response['tasks'] = (object) $tasks;

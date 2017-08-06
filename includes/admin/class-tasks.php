@@ -19,10 +19,11 @@ class Managx_Admin_Tasks {
      */
     function get_tasks( $list_id ,$offset = 0, $limit = 20 ) {
         global $wpdb;
+        $table   = $wpdb->prefix . 'managx_tasks';
 
         if ( !$list_id ) return;
 
-        $sql   = "SELECT * FROM {$this->table} WHERE project_id = {$list_id} ";
+        $sql   = "SELECT * FROM {$table} WHERE project_id = {$list_id} ";
         $sql .= " LIMIT {$offset} , {$limit}  ";
         $tasks = $wpdb->get_results( $sql );
 

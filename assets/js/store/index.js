@@ -6,7 +6,8 @@ export default new Vuex.Store({
         projects: [],
         lists: [],
         list : {},
-        tasks : []
+        tasks : [],
+        task : {}
     },
     getters: {
         project: state => {
@@ -18,8 +19,14 @@ export default new Vuex.Store({
         lists: state => {
             return state.lists;
         },
+        list: state => {
+            return state.list;
+        },
         tasks: state => {
             return state.tasks;
+        },
+        task: state => {
+            return state.task;
         },
     },
     mutations: {
@@ -66,6 +73,7 @@ export default new Vuex.Store({
                 'type': 'get',
                 'url': ajaxurl,
                 success: function (response) {
+
                     if (response.success) {
                         context.commit('getProject', {project: response.data});
                     }
@@ -170,6 +178,7 @@ export default new Vuex.Store({
                 'type': 'get',
                 'url': ajaxurl,
                 success: function (response) {
+                    console.log(response);
                     if (response.success) {
                         context.commit('getList', {list: response.data});
                     }
@@ -180,7 +189,7 @@ export default new Vuex.Store({
         //task
         getTasks (context, {listId, limit, offset}) {
             var data = {
-                'action': 'get_lists',
+                'action': 'get_tasks',
                 'list_id': listId,
                 'limit': limit,
                 'offset': offset,
@@ -191,8 +200,9 @@ export default new Vuex.Store({
                 'type': 'get',
                 'url': ajaxurl,
                 success: function (response) {
+                    /*console.log(response);*/
                     if (response.success) {
-                        context.commit('getTasks', {lists: response.data});
+                        context.commit('getTasks', {tasks: response.data});
                     }
                 }
             });
