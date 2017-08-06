@@ -30,9 +30,13 @@ export default new Vuex.Store({
         getLists (state, {lists}) {
             state.lists = lists;
         },
-        //lists
-        createList (state, {list}) {
-            state.lists.push(list);
+
+        sortBy (state, {type, sortKey, reverse}) {
+            state[type] = _.sortBy(state[type], sortKey, reverse ? 'desc' : 'asc');
+
+            if (reverse) {
+                state[type].reverse();
+            }
         }
     },
     actions: {
@@ -137,6 +141,9 @@ export default new Vuex.Store({
                     }
                 }
             });
+        },
+        sortBy (context, {type, sortKey, reverse}) {
+            context.commit('sortBy', {type, sortKey, reverse});
         }
     }
 });

@@ -149,11 +149,21 @@ class Managx_Admin_Menu {
 
     public function display_notifications_settings()
     {
+        $options = array(
+            '1' => __( 'Get notified with every activities', 'managx' ),
+            '2' => __( 'Get notified only with your activities', 'managx' )
+        );
+
+        $options = apply_filters( 'desktop_notification_options', $options );
+
         ?>
         <h3><?php _e( 'DESKTOP NOTIFICATION', 'managx' ); ?></h3>
         <p><?php _e( 'Get notified everytime when there is a new activity', 'managx' ); ?></p>
-        <div class="mb5"><label><input type="radio" name="notifications_settings" value="1" <?php checked( 1, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified with every activities', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="radio" name="notifications_settings" value="2" <?php checked( 2, get_option('notifications_settings'), true); ?>><?php _e( 'Get notified only with your activities', 'managx' ); ?></label></div>
+        <?php if ( isset( $options ) && count( $options ) > 0 ) : ?>
+            <?php foreach ( $options as $key => $value ) : ?>
+                <div class="mb5"><label><input type="radio" name="notifications_settings" value="<?php echo $key; ?>" <?php checked( $key, get_option('notifications_settings'), true); ?>><?php echo $value; ?></label></div>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <?php
     }
 
@@ -162,14 +172,15 @@ class Managx_Admin_Menu {
         ?>
         <h3><?php _e( 'EMAIL NOTIFICATION', 'managx' ); ?></h3>
         <p><?php _e( 'Select when do you want to get notified via email', 'managx' ); ?></p>
-        <?php $notification_value = get_option( 'email_notifications_settings' ); ?>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_1]" value="1" <?php checked( isset( $notification_value['option_1'] ) ); ?>><?php _e( ' If someone mentions me anywhere', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_2]" value="2" <?php checked( isset( $notification_value['option_2'] ) ); ?>><?php _e( ' New comments on my discussion or task', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_3]" value="3" <?php checked( isset( $notification_value['option_3'] ) ); ?>><?php _e( ' Due of tasks assign to me', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_4]" value="4" <?php checked( isset( $notification_value['option_4'] ) ); ?>><?php _e( ' Someone completes task assigned by me', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_5]" value="5" <?php checked( isset( $notification_value['option_5'] ) ); ?>><?php _e( ' Someone starts new discussion', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_6]" value="6" <?php checked( isset( $notification_value['option_6'] ) ); ?>><?php _e( ' New comment on my project', 'managx' ); ?></label></div>
-        <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[option_7]" value="7" <?php checked( isset( $notification_value['option_7'] ) ); ?>><?php _e( ' New task on my project', 'managx' ); ?></label></div>
+        <?php 
+            $notification_value = get_option( 'email_notifications_settings' );
+            $options            = managx_get_email_notification_options(); 
+        ?>
+        <?php if ( isset( $options ) && count( $options ) > 0 ) : ?>
+            <?php foreach ( $options as $key => $value ) : ?>
+                <div class="mb5"><label><input type="checkbox" name="email_notifications_settings[<?php echo $key; ?>]" value="<?php echo $key; ?>" <?php if ( isset( $notification_value[ $key ] ) && $notification_value[ $key ] == $key ) echo 'checked'; ?>><?php echo ' '.$value; ?></label></div>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <?php
     }
 
