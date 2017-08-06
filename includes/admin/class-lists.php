@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Handle all function of list related.  
+ * Handle all function of list related.
  */
 class Managx_Admin_Lists {
 
     protected $table;
 
     function __construct() {
-
         global $wpdb;
         $this->table = $wpdb->prefix . 'managx_lists';
     }
@@ -23,7 +22,6 @@ class Managx_Admin_Lists {
      * @return void
      */
     function get_lists( $project_id ,$offset = 0, $limit = 20 ) {
-
         global $wpdb;
 
         if ( !$project_id ) return;
@@ -82,7 +80,7 @@ class Managx_Admin_Lists {
      * @return true on success, false on failure
      */
     function update_list( $list_id, $data ) {
-        
+
     }
 
     /**
@@ -95,7 +93,7 @@ class Managx_Admin_Lists {
      * @return true on success false on failure
      */
     function delete_list( $list_id ) {
-        
+
     }
 
 }
