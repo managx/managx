@@ -76,12 +76,13 @@ class Managx_Admin_Ajax_Handler {
 
     //create list
     public function create_list() {
+
         $cuid         = wp_get_current_user()->ID;
         $list_data = array();
         parse_str( $_POST['formData'], $list_data );
 
         $list_data['create_by']    = $cuid;
-        $list_data['list_date'] = current_time( 'mysql' );
+        $list_data['create_date'] = current_time( 'mysql' );
         $list_data['status']       = 1;
 
         $list_class = new Managx_Admin_Lists();

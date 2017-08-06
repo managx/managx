@@ -30,6 +30,10 @@ export default new Vuex.Store({
         getLists (state, {lists}) {
             state.lists = lists;
         },
+        //lists
+        createList (state, {list}) {
+            state.lists.push(list);
+        }
     },
     actions: {
         getProject (context, {id}) {
@@ -92,7 +96,7 @@ export default new Vuex.Store({
                 'formData': jQuery(formSelector).serialize(),
             };
 
-            jQuery.ajax({
+            /*jQuery.ajax({
                 data: data,
                 type: 'post',
                 url: ajaxurl,
@@ -101,7 +105,19 @@ export default new Vuex.Store({
                         context.commit('createList', {list: response.data});
                     }
                 }
-            });
+            });*/
+            jQuery.post(
+                ajaxurl,
+                data,
+                function (response) {
+                    console('he he he');
+                    if (response.success) {
+                        context.commit('createList', {list: response.data});
+                    }
+                }
+            )
+
+
         },
         getLists (context, {projectId, limit, offset}) {
             var data = {

@@ -31,8 +31,12 @@ import SingleProject from './components/single-project';
 // Single Project Tasks Component
 import SingleProjectTasks from './components/single-project-tasks';
 
+//list
 // Single Project Lists Component
 import SingleProjectLists from './components/single-project-lists';
+
+// Single Project Lists Component
+import ListForm from './components/list-form';
 
 // All WP User List Component
 import UsersList from './components/users';
@@ -47,7 +51,9 @@ const routes = [
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
     { path: '/projects/:id/lists', component: SingleProjectLists },
-    { path: '/projects/:id/settings', component: Settings }
+    { path: '/projects/:id/lists/create', component: ListForm },
+    { path: '/projects/:id/settings', component: Settings },
+
 ];
 
 const router = new VueRouter({

@@ -59,8 +59,16 @@ class Managx_Admin_Lists {
      *
      * @return int list id on success, false on failure
      */
-    function create_list( $project_id, $data ) {
-        
+    function create_list( $data ) {
+        print_r($data);
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_lists';
+        $wpdb->insert( $table, $data );
+        $lid     = $wpdb->insert_id;
+        // return project_object
+        $list = $this->get_list( $lid );
+
+        return $list;
     }
 
     /**

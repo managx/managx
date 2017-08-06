@@ -29,7 +29,7 @@
 
                         <router-link class="btn create_button" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }">Add New Task List</router-link>
                         <ul>
-                            <li v-for="list in lists">List</li>
+                            <li v-for="list in lists">{{ list.name }}</li>
                         </ul>
                     </div>
                 </div>
