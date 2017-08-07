@@ -14,6 +14,7 @@ class Managx_Admin_Ajax_Handler {
 
         //tasks
         add_action( 'wp_ajax_get_tasks', array( $this, 'get_tasks' ) );
+        add_action( 'wp_ajax_create_task', array( $this, 'create_task' ) );
     }
 
     public function get_project() {
@@ -124,10 +125,30 @@ class Managx_Admin_Ajax_Handler {
 
         if ( $tasks ) {
 
-            $response['tasks'] = (object) $tasks;
+            $response['data'] = (object) $tasks;
             $response['success']  = true;
         }
         wp_send_json( $response );
+    }
+
+    public function create_task() {
+        $cuid         = wp_get_current_user()->ID;
+        $task_data = array();
+        parse_str( $_POST['formData'], $task_data );
+
+        $task_data['created_at'] = current_time( 'mysql' );
+        $task_data['created_by'] = $cuid;
+        $task_data['due_date'] = current_time( 'mysql' );
+        $task_data['status']     = 1;
+        $task_class = new Managx_Admin_Tasks();
+
+        $task = $task_class->create_task( $task_data );
+
+        if ( ! $task ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( $task );
     }
 
 }

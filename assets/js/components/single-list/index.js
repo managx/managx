@@ -2,6 +2,7 @@ export default {
     template: '#tmpl-managx-single-list',
     data () {
         return {
+            listId : this.$route.params.listId
         }
     },
     created () {

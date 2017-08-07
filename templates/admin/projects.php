@@ -13,3 +13,6 @@ managx_load_template( 'admin/vue-templates/template-projects-root.php' );
 managx_load_template( 'admin/vue-templates/template-list-form.php' );
 managx_load_template( 'admin/vue-templates/template-list.php' );
 managx_load_template( 'admin/vue-templates/template-single-list.php' );
+
+//task
+managx_load_template( 'admin/vue-templates/template-task-form.php' );

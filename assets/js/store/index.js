@@ -57,7 +57,14 @@ export default new Vuex.Store({
         },
         getTasks (state, {tasks}) {
             state.tasks = tasks;
-        }
+            console.log(tasks);
+        },
+        getTask (state, {task}) {
+            state.task = task;
+        },
+        createTask (state, {task}) {
+            state.tasks.push(task);
+        },
     },
     actions: {
         sortBy (context, {type, sortKey, reverse}) {
@@ -138,6 +145,7 @@ export default new Vuex.Store({
                 }
             });
         },
+        //task
         getTasks (context, {listId, limit, offset}) {
             var data = {
                 'action': 'get_tasks',
@@ -151,6 +159,18 @@ export default new Vuex.Store({
                     context.commit('getTasks', {tasks: response.data});
                 }
             });
-        }
+        },
+        createTask (context, {formSelector}) {
+            var data = {
+                'action': 'create_task',
+                'formData': jQuery(formSelector).serialize(),
+            };
+
+            jQuery.post(ajaxurl, data, function (response) {
+                if (response.success) {
+                    context.commit('createTask', {task: response.data});
+                }
+            });
+        },
     }
 });

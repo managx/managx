@@ -38,9 +38,11 @@ import SingleProjectLists from './components/single-project-lists';
 // Single Project Lists Component
 import ListForm from './components/list-form';
 
-// Single Project Lists Component
+// List
 import List from './components/list';
 Vue.component('list', List);
+
+import TaskForm from './components/task-form';
 
 // Single Project Lists Component
 import SingleList from './components/single-list';
@@ -58,7 +60,10 @@ const routes = [
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
     { path: '/projects/:id/lists', component: SingleProjectLists },
+    //task
     { path: '/projects/:id/lists/:listId/tasks', component: SingleList },
+    { path: '/projects/:id/lists/:listId/tasks/create', component: TaskForm },
+
     { path: '/projects/:id/lists/create', component: ListForm },
     { path: '/projects/:id/settings', component: Settings },
 

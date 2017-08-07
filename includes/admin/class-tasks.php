@@ -35,10 +35,30 @@ class Managx_Admin_Tasks {
      *
      * @since v0.0.1
      *
+     * @param int $flag
      * @param int $task_id
      */
-    function get_task( $task_id ) {
-        
+    function get_task( $id, $flag = 'task' ) {
+
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_tasks';
+
+        switch ( $flag ) {
+
+            case 'project':
+                $whereField = 'project_id';
+                break;
+            case 'list':
+                $whereField = 'list_id';
+                break;
+            default:
+                $whereField = 'id';
+
+        }
+        $sql     = "SELECT * FROM `{$table}`  WHERE {$whereField} = {$id} ";
+        $task = $wpdb->get_row( $sql );
+
+        return $task;
     }
 
     /**
@@ -48,8 +68,16 @@ class Managx_Admin_Tasks {
      *
      * @return int task id on success, false on failure
      */
-    function create_task( $list_id ) {
-        
+    function create_task( $data ) {
+        // save to DB
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_tasks';
+        $wpdb->insert( $table, $data );
+        $pid     = $wpdb->insert_id;
+        // return project_object
+        $task = $this->get_task( $pid );
+
+        return $task;
     }
 
     /**

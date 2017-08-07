@@ -1,9 +1,6 @@
 <script type="text/x-template" id="tmpl-managx-single-list">
 
     <div>
-        {{ project | json }}
-        {{ list | json }}
-        {{ tasks | json }}
         <div class="container-fluid">
             <!--breadcrumb-->
             <div class="row pt25 pb25">
@@ -28,24 +25,15 @@
             <div class="row mr0">
                 <div class="col-md-12">
                     <div class="container-fluid">
-                        <router-link class="btn create_button mb30" v-bind:to="{ path: '/projects/' + project.id + '/lists/create' }"><?php _e( 'Add New Task', 'managx' ); ?></router-link>
+                        <router-link class="btn create_button mb30" v-bind:to="{ path: '/projects/' + project.id + '/lists/' + listId +'/tasks/create' }"><?php _e( 'Add New Task', 'managx' ); ?></router-link>
                         <div class="row">
-                            <div class="col-sm-3 mb30"
-                                 v-for="task in tasks">
+                            <div class="col-sm-12 mb30">
                                 <div class="list-wrapper">
-                                    <h3><a href="javascript:">{{ task.name }}</a></h3>
-                                    <div class="each-task">
-                                        <div class="task">New Series Writing</div>
+                                    <div class="each-task" v-for="task in tasks">
+                                        <div class="task">{{ task.name }}</div>
                                         <span>due on 20 september, 2015</span>
                                     </div>
-                                    <div class="each-task">
-                                        <div class="task">New Series Writing</div>
-                                        <span>due on 20 september, 2015</span>
-                                    </div>
-                                    <div class="each-task">
-                                        <div class="task">New Series Writing</div>
-                                        <span>due on 20 september, 2015</span>
-                                    </div>
+                                    <!--<h3><a href="javascript:">{{ task.name }}</a></h3>-->
                                 </div>
                             </div>
                         </div>
