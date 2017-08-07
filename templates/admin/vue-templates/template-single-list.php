@@ -31,7 +31,8 @@
                                 <div class="list-wrapper">
                                     <div class="each-task" v-for="task in tasks">
                                         <div class="task">{{ task.name }}</div>
-                                        <span>due on 20 september, 2015</span>
+                                        <span><?php _e('Create : '); ?>{{ task.created_at }}</span> |
+                                        <span><?php _e('Due date : '); ?>{{ task.due_date }}</span>
                                     </div>
                                     <!--<h3><a href="javascript:">{{ task.name }}</a></h3>-->
                                 </div>
