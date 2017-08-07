@@ -103,7 +103,7 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    context.commit('createProject', {project: response.data});
+                    //context.commit('createProject', {project: response.data});
                 }
             });
         },
@@ -115,7 +115,7 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    context.commit('createList', {list: response.data});
+                    //context.commit('createList', {list: response.data});
                 }
             });
         },
@@ -168,7 +168,7 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    context.commit('createTask', {task: response.data});
+                    // context.commit('createTask', {task: response.data});
                 }
             });
         },
