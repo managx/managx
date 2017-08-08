@@ -15,8 +15,8 @@ export default {
     },
     methods: {
         fetchData () {
-            if (typeof this.$route.params.status !== 'undefined') {
-                this.getProjects(20, 0, this.$route.params.status);
+            if (typeof this.$route.query.status !== 'undefined') {
+                this.getProjects(20, 0, this.$route.query.status);
             } else {
                 this.getProjects(20, 0, 'publish');
             }

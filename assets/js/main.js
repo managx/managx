@@ -54,7 +54,6 @@ Vue.component('users-list', UsersList);
 
 const routes = [
     { path: '/', redirect: '/projects' },
-    { path: '/projects/status/:status', component: ProjectsRoot },
     { path: '/projects', component: ProjectsRoot },
     { path: '/projects/create', component: ProjectForm },
     { path: '/projects/:id', redirect: '/projects/:id/details' },

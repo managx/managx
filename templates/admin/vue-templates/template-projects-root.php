@@ -17,7 +17,7 @@
             <?php
             foreach ( Managx_Global::post_statuses() as $status => $label ) {
                 ?>
-                <router-link to="/projects/status/<?php echo $status; ?>"><?php _e( $label , 'managx' ); ?></router-link>
+                <router-link to="/projects?status=<?php echo $status; ?>"><?php _e( $label , 'managx' ); ?></router-link>
             <?php
             };
             ?>
