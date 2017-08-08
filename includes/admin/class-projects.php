@@ -140,6 +140,9 @@ class Managx_Admin_Projects {
      */
     function delete_project( $project_id ) {
 
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_projects';
+        return $wpdb->delete( $table, array( 'id' => $project_id ) );
     }
 
 }

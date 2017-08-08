@@ -1,15 +1,17 @@
 export default {
     template: '#tmpl-managx-project',
-    props: ['project'],
+    props: ['project','index'],
     data() {
         return {
 
         }
     },
     mounted (){
-
     },
-    method: {
+    methods: {
+        trashProject (project,index) {
+            this.$store.dispatch('trashProject', {project : project, index : index });
+        }
 
     }
 }

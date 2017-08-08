@@ -46,6 +46,10 @@ export default new Vuex.Store({
         createProject (state, {project}) {
             state.projects.push(project);
         },
+        trashProject (state, {project,index}) {
+            state.projects.splice(index,1);
+        },
+        //list
         getList (state, {list}) {
             state.list = list;
         },
@@ -91,6 +95,7 @@ export default new Vuex.Store({
 
             jQuery.get(ajaxurl, data, function (response) {
                 if (response.success) {
+                    console.log(response);
                     context.commit('getProjects', {projects: response.data});
                 }
             });
@@ -107,6 +112,19 @@ export default new Vuex.Store({
                 }
             });
         },
+        trashProject (context, {project,index}) {
+            var data = {
+                'action': 'trash_project',
+                'id' : project.id
+            };
+
+            jQuery.post(ajaxurl, data, function (response) {
+                if (response.success) {
+                    context.commit('trashProject', {project: project, index: index});
+                }
+            });
+        },
+        //list
         createList (context, {formSelector}) {
             var data = {
                 'action': 'create_list',

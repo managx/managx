@@ -1,8 +1,11 @@
 <script type="text/x-template" id="tmpl-managx-project">
-    <div class="col-sm-4 mb15 pr0">
+    <div class="col-sm-4 mb15 pr0 each_project">
         <div class="bg-white pr15 pl15 pt25 pb25">
-            <h2 class="mb20"><router-link v-bind:to="{ path: 'projects/' + project.id }">{{ project.name }}</router-link></h2>
-            <i class="dashicons dashicons-trash"></i>
+            <div class="oh">
+                <h2 class="mb20 pull-left"><router-link v-bind:to="{ path: 'projects/' + project.id }">{{ project.name }}</router-link></h2>
+                <a class="dashicons dashicons-trash trash pull-right" @click="trashProject(project,index)"></a>
+            </div>
+
             <div class="oh">
                 <div class="pull-left">Last Updated : 14 mins ago </div>
                 <div class="pull-right"><i class="glyphicon glyphicon-lock"></i> Everyone</div>

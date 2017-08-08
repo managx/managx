@@ -16,7 +16,7 @@
             </div>
             <!--project lists-->
             <div class="row pb25 mr0">
-                <project v-for="project in projects" :project="project" :key="project.id"></project>
+                <project v-for="(project,index) in projects" :project="project" :key="project.id" :index="index"></project>
             </div>
             <!--project list ends-->
         </div>

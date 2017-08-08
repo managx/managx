@@ -6,7 +6,7 @@ class Managx_Admin_Ajax_Handler {
         add_action( 'wp_ajax_create_project', array( $this, 'create_project' ) );
         add_action( 'wp_ajax_get_project', array( $this, 'get_project' ) );
         add_action( 'wp_ajax_get_projects', array( $this, 'get_projects' ) );
-
+        add_action( 'wp_ajax_trash_project', array( $this, 'trash_project' ) );
         //lists
         add_action( 'wp_ajax_get_lists', array( $this, 'get_lists' ) );
         add_action( 'wp_ajax_get_list', array( $this, 'get_list' ) );
@@ -59,6 +59,18 @@ class Managx_Admin_Ajax_Handler {
         }
 
         wp_send_json_success( $project );
+    }
+
+    public function trash_project() {
+
+        $id = $_POST['id'];
+        $class = new Managx_Admin_Projects();
+        $result = $class->delete_project( $id );
+        if ( ! $result ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( $result );
     }
 
     //lists
