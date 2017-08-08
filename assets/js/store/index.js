@@ -49,6 +49,9 @@ export default new Vuex.Store({
         trashProject (state, {project,index}) {
             state.projects.splice(index,1);
         },
+        deleteProject (state, {project,index}) {
+            state.projects.splice(index,1);
+        },
         //list
         getList (state, {list}) {
             state.list = list;
@@ -127,6 +130,18 @@ export default new Vuex.Store({
                 console.log(response);
                 if (response.success) {
                     context.commit('trashProject', {project: project, index: index});
+                }
+            });
+        },
+        deleteProject (context, {project,index}) {
+            var data = {
+                'action': 'delete_project',
+                'id' : project.id,
+            };
+
+            jQuery.post(ajaxurl, data, function (response) {
+                if (response.success) {
+                    context.commit('deleteProject', {project: project,index : index});
                 }
             });
         },
