@@ -86,17 +86,21 @@ export default new Vuex.Store({
                 }
             });
         },
-        getProjects (context, {limit, offset}) {
+        getProjects (context, {limit, offset, status}) {
             var data = {
                 'action': 'get_projects',
                 'limit': limit,
                 'offset': offset,
+                'status' : status
             };
 
             jQuery.get(ajaxurl, data, function (response) {
+
                 if (response.success) {
-                    console.log(response);
+
                     context.commit('getProjects', {projects: response.data});
+                } else {
+                    context.commit('getProjects', {});
                 }
             });
         },

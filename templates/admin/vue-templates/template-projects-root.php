@@ -14,6 +14,13 @@
                     </ul>
                 </div>
             </div>
+            <?php
+            foreach ( Managx_Global::post_statuses() as $status => $label ) {
+                ?>
+                <router-link to="/projects/status/<?php echo $status; ?>"><?php _e( $label , 'managx' ); ?></router-link>
+            <?php
+            };
+            ?>
             <!--project lists-->
             <div class="row pb25 mr0">
                 <project v-for="(project,index) in projects" :project="project" :key="project.id" :index="index"></project>

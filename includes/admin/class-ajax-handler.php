@@ -31,8 +31,10 @@ class Managx_Admin_Ajax_Handler {
     public function get_projects() {
         $offset        = $_GET['offset'];
         $limit         = $_GET['limit'];
+        $status        = isset( $_GET['status'] ) ? $_GET['status'] : 'publish';
+
         $project_class = new Managx_Admin_Projects();
-        $projects      = $project_class->get_projects( $offset, $limit );
+        $projects      = $project_class->get_projects( $offset, $limit, 'status = "'.$status.'"' );
 
         if ( ! $projects ) {
             wp_send_json_error();
@@ -48,7 +50,7 @@ class Managx_Admin_Ajax_Handler {
 
         $project_data['created_by'] = $cuid;
         $project_data['start_date'] = current_time( 'mysql' );
-        $project_data['status']     = 1;
+        $project_data['status'] = !isset( $project_data['status'] ) ? 'publish' : $project_data['status'];
 
         $project_class = new Managx_Admin_Projects();
 

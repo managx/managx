@@ -7,11 +7,22 @@ export default {
         }
     },
     created () {
-        this.getProjects(20, 0);
+        this.fetchData();
+    },
+    watch: {
+        // call again the method if the route changes
+        '$route': 'fetchData'
     },
     methods: {
-        getProjects (limit, offset) {
-            this.$store.dispatch('getProjects', {limit, offset});
+        fetchData () {
+            if (typeof this.$route.params.status !== 'undefined') {
+                this.getProjects(20, 0, this.$route.params.status);
+            } else {
+                this.getProjects(20, 0, 'publish');
+            }
+        },
+        getProjects (limit, offset, status) {
+            this.$store.dispatch('getProjects', {limit, offset, status});
         },
         sortBy(sortKey) {
             this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
