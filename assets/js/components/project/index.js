@@ -9,8 +9,8 @@ export default {
     mounted (){
     },
     methods: {
-        trashProject (project,index) {
-            this.$store.dispatch('trashProject', {project : project, index : index });
+        changeStatus (project,index,status) {
+            this.$store.dispatch('changeProjectStatus', {project : project, index : index, status : status });
         }
 
     }

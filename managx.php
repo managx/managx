@@ -72,7 +72,7 @@ class ManagX {
                 `updated_at` DATETIME NOT NULL,
                 `start_date` DATE NOT NULL,
                 `end_date` DATE NOT NULL,
-                `status` int NOT NULL,
+                `status` VARCHAR(20) NOT NULL,
                 PRIMARY KEY (`id`)
             )$collate;",
 

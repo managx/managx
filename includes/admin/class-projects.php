@@ -67,6 +67,7 @@ class Managx_Admin_Projects {
         // save to DB
         global $wpdb;
         $table   = $wpdb->prefix . 'managx_projects';
+
         $wpdb->insert( $table, $projet_data );
         $pid     = $wpdb->insert_id;
         // return project_object
@@ -85,8 +86,19 @@ class Managx_Admin_Projects {
      *
      * @return void
      */
-    function update_projct( $project_id, $data ) {
+    function update_projct( $project_id, $data, $format = array() ) {
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_projects';
 
+        $result = $wpdb->update(
+            $table,
+            $data,
+            array( 'id' => $project_id ),
+            $format,
+            array( '%d' )
+        );
+
+        return $result;
     }
 
     /**

@@ -3,7 +3,7 @@
         <div class="bg-white pr15 pl15 pt25 pb25">
             <div class="oh">
                 <h2 class="mb20 pull-left"><router-link v-bind:to="{ path: 'projects/' + project.id }">{{ project.name }}</router-link></h2>
-                <a class="dashicons dashicons-trash trash pull-right" @click="trashProject(project,index)"></a>
+                <a class="dashicons dashicons-trash trash pull-right" @click="changeStatus(project,index,'trash')"></a>
             </div>
 
             <div class="oh">

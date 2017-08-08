@@ -112,13 +112,15 @@ export default new Vuex.Store({
                 }
             });
         },
-        trashProject (context, {project,index}) {
+        changeProjectStatus (context, {project,index,status}) {
             var data = {
-                'action': 'trash_project',
-                'id' : project.id
+                'action': 'change_project_status',
+                'id' : project.id,
+                'status' : status
             };
 
             jQuery.post(ajaxurl, data, function (response) {
+                console.log(response);
                 if (response.success) {
                     context.commit('trashProject', {project: project, index: index});
                 }
