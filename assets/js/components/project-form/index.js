@@ -1,3 +1,4 @@
+var _this = '';
 export default {
     template: '#tmpl-managx-project-form',
     data () {
@@ -10,10 +11,14 @@ export default {
             },
         }
     },
+    created () {
+      _this = this;
+    },
     methods: {
         create () {
-            this.$store.dispatch('createProject', {formSelector: '#create-project-form'});
-            this.$router.push('/');
+            this.$store.dispatch('createProject', {formSelector: '#create-project-form', callback : function(){
+                _this.$router.push('/');
+            }});
         },
         cancel () {
             this.$router.push('/');

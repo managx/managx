@@ -107,7 +107,7 @@ export default new Vuex.Store({
                 }
             });
         },
-        createProject (context, {formSelector}) {
+        createProject (context, {formSelector,callback}) {
             var data = {
                 'action': 'create_project',
                 'formData': jQuery(formSelector).serialize(),
@@ -115,7 +115,9 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    //context.commit('createProject', {project: response.data});
+                    if( typeof callback !== 'undefined' ) {
+                        callback();
+                    }
                 }
             });
         },
@@ -146,18 +148,17 @@ export default new Vuex.Store({
             });
         },
         //list
-        createList (context, {formSelector}) {
+        createList (context, {formSelector,callback}) {
             var data = {
                 'action': 'create_list',
                 'formData': jQuery(formSelector).serialize(),
             };
 
             jQuery.post(ajaxurl, data, function (response) {
-                console.log(response);
                 if (response.success) {
-                    //console.log(this.$route.params.id);
-                    //this.$router.push('/projects/'+ this.$route.params.id +'/lists');
-                    //context.commit('createList', {list: response.data});
+                    if( typeof callback !== 'undefined' ) {
+                        callback();
+                    }
                 }
             });
         },
@@ -218,7 +219,7 @@ export default new Vuex.Store({
                 }
             });
         },
-        createTask (context, {formSelector}) {
+        createTask (context, {formSelector,callback}) {
             var data = {
                 'action': 'create_task',
                 'formData': jQuery(formSelector).serialize(),
@@ -226,7 +227,9 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    // context.commit('createTask', {task: response.data});
+                    if( typeof callback !== 'undefined' ) {
+                        callback();
+                    }
                 }
             });
         },

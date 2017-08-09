@@ -1,3 +1,4 @@
+var _this = '';
 export default {
     template: '#tmpl-managx-list-form',
     data () {
@@ -11,11 +12,14 @@ export default {
             },
         }
     },
+    created () {
+        _this = this;
+    },
     methods: {
         create () {
-
-            this.$store.dispatch('createList', {formSelector: '#create-list-form'});
-            this.$router.push('/projects/'+ this.$route.params.id +'/lists');
+            this.$store.dispatch('createList', {formSelector: '#create-list-form', callback : function () {
+                _this.$router.push('/projects/'+ _this.$route.params.id +'/lists');
+            }});
         },
         cancel () {
             this.$router.push('/projects/'+ this.$route.params.id +'/lists');
