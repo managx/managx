@@ -42,7 +42,11 @@ import ListForm from './components/list-form';
 import List from './components/list';
 Vue.component('list', List);
 
+//task
+
 import TaskForm from './components/task-form';
+
+import SingleTask from './components/single-task';
 
 // Single Project Lists Component
 import SingleList from './components/single-list';
@@ -60,11 +64,13 @@ const routes = [
     { path: '/projects/:id/details', component: SingleProject },
     { path: '/projects/:id/tasks', component: SingleProjectTasks },
     { path: '/projects/:id/lists', component: SingleProjectLists },
+    { path: '/projects/:id/lists/create', component: ListForm },
     //task
     { path: '/projects/:id/lists/:listId/tasks', component: SingleList },
     { path: '/projects/:id/lists/:listId/tasks/create', component: TaskForm },
+    { path: '/projects/:id/lists/:listId/tasks/:taskId', component: SingleTask },
 
-    { path: '/projects/:id/lists/create', component: ListForm },
+
     { path: '/projects/:id/settings', component: Settings },
 
 ];

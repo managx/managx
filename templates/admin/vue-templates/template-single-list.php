@@ -30,7 +30,8 @@
                             <div class="col-sm-12 mb30">
                                 <div class="list-wrapper">
                                     <div class="each-task" v-for="task in tasks">
-                                        <div class="task">{{ task.name }}</div>
+                                        <div class="task">
+                                            <router-link v-bind:to="{ path: '/projects/' + project.id + '/lists/' + $route.params.listId + '/tasks/' + task.id }">{{ task.name }}</router-link></div>
                                         <span><?php _e('Create : '); ?>{{ task.created_at }}</span> |
                                         <span><?php _e('Due date : '); ?>{{ task.due_date }}</span>
                                     </div>

@@ -15,6 +15,7 @@ class Managx_Admin_Ajax_Handler {
 
         //tasks
         add_action( 'wp_ajax_get_tasks', array( $this, 'get_tasks' ) );
+        add_action( 'wp_ajax_get_task', array( $this, 'get_task' ) );
         add_action( 'wp_ajax_create_task', array( $this, 'create_task' ) );
     }
 
@@ -161,6 +162,20 @@ class Managx_Admin_Ajax_Handler {
             $response['success']  = true;
         }
         wp_send_json( $response );
+    }
+
+    public function get_task() {
+
+        $id = $_GET['task_id'];
+
+        $class = new Managx_Admin_Tasks();
+        $result = $class->get_task( $id );
+
+        if ( ! $result ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( $result );
     }
 
     public function create_task() {

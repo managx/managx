@@ -98,7 +98,7 @@ export default new Vuex.Store({
             };
 
             jQuery.get(ajaxurl, data, function (response) {
-
+                console.log(response);
                 if (response.success) {
 
                     context.commit('getProjects', {projects: response.data});
@@ -153,7 +153,10 @@ export default new Vuex.Store({
             };
 
             jQuery.post(ajaxurl, data, function (response) {
+                console.log(response);
                 if (response.success) {
+                    //console.log(this.$route.params.id);
+                    //this.$router.push('/projects/'+ this.$route.params.id +'/lists');
                     //context.commit('createList', {list: response.data});
                 }
             });
@@ -167,6 +170,7 @@ export default new Vuex.Store({
             };
 
             jQuery.get(ajaxurl, data, function (response) {
+                console.log(response);
                 if (response.success) {
                     context.commit('getLists', {lists: response.data});
                 }
@@ -196,6 +200,21 @@ export default new Vuex.Store({
             jQuery.get(ajaxurl, data, function (response) {
                 if (response.success) {
                     context.commit('getTasks', {tasks: response.data});
+                }
+            });
+        },
+        getTask (context, {taskId}) {
+            var data = {
+                'action': 'get_task',
+                'task_id': taskId
+            };
+
+            jQuery.get(ajaxurl, data, function (response) {
+                console.log(response);
+                if (response.success) {
+                    context.commit('getTask', {task: response.data});
+                } else {
+                    context.commit('getTask', {});
                 }
             });
         },

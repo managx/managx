@@ -13,6 +13,7 @@ export default {
     },
     methods: {
         create () {
+
             this.$store.dispatch('createList', {formSelector: '#create-list-form'});
             this.$router.push('/projects/'+ this.$route.params.id +'/lists');
         },
