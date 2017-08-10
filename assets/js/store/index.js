@@ -114,6 +114,7 @@ export default new Vuex.Store({
             };
 
             jQuery.post(ajaxurl, data, function (response) {
+                console.log(response);
                 if (response.success) {
                     if( typeof callback !== 'undefined' ) {
                         callback();

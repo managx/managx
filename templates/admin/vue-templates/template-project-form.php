@@ -18,6 +18,42 @@
                             <textarea name="description" v-model="form.description"></textarea>
                         </div>
                         <div class="form-inner-row">
+                            <label class="form-inner-lbl"><?php _e( 'Post status', 'managx' ); ?></label>
+                            <select name="post_status" v-model="form.post_status">
+                                <?php
+                                foreach ( Managx_Global::post_statuses() as $status => $label) {
+                                    ?>
+                                    <option value="<?php echo $status; ?>"><?php _e( $label, 'managx' ); ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-inner-row">
+                            <label class="form-inner-lbl"><?php _e( 'Progression status', 'managx' ); ?></label>
+                            <select name="progress_status" v-model="form.progress_status">
+                                <?php
+                                foreach ( Managx_Global::progress_status() as $status => $label) {
+                                    ?>
+                                    <option value="<?php echo $status; ?>"><?php _e( $label, 'managx' ); ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-inner-row">
+                            <label class="form-inner-lbl"><?php _e( 'Privacy status', 'managx' ); ?></label>
+                            <select name="privacy_status" v-model="form.privacy_status">
+                                <?php
+                                foreach ( Managx_Global::privacy_status() as $status => $label) {
+                                    ?>
+                                    <option value="<?php echo $status; ?>"><?php _e( $label, 'managx' ); ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-inner-row">
                             <label class="form-inner-lbl"><?php _e( 'Assign User', 'managx' ); ?></label>
                             <div class="form-inner-right-side-element">
                                 <multiselect v-model="form.user" :options="['Select option', 'label', 'hideSelected','touched']" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Select User"></multiselect>

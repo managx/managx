@@ -7,7 +7,10 @@ export default {
             form: {
                 name: '',
                 description: '',
-                user: ''
+                user: '',
+                post_status : 'publish',
+                progress_status : 'scheduled',
+                privacy_status : 'public'
             },
         }
     },

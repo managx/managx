@@ -3,7 +3,7 @@ export default {
     props: ['project','index'],
     data() {
         return {
-            status : ( this.$route.query.status !== 'undefined' ? this.$route.params.status : '' ),
+            status : ( this.$route.query.post_status !== 'undefined' ? this.$route.query.post_status : '' ),
         }
     },
     created (){

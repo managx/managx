@@ -86,7 +86,7 @@ class Managx_Admin_Projects {
      *
      * @return void
      */
-    function update_projct( $project_id, $data, $format = array() ) {
+    function update_project( $project_id, $data, $format = array() ) {
         global $wpdb;
         $table   = $wpdb->prefix . 'managx_projects';
 

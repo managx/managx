@@ -36,7 +36,7 @@ class Managx_Admin_Ajax_Handler {
         $status        = isset( $_GET['status'] ) ? $_GET['status'] : 'publish';
 
         $project_class = new Managx_Admin_Projects();
-        $projects      = $project_class->get_projects( $offset, $limit, 'status = "'.$status.'"' );
+        $projects      = $project_class->get_projects( $offset, $limit, 'post_status = "'.$status.'"' );
 
         if ( ! $projects ) {
             wp_send_json_error();
@@ -52,7 +52,9 @@ class Managx_Admin_Ajax_Handler {
 
         $project_data['created_by'] = $cuid;
         $project_data['start_date'] = current_time( 'mysql' );
-        $project_data['status'] = !isset( $project_data['status'] ) ? 'publish' : $project_data['status'];
+        $project_data['post_status'] = !isset( $project_data['post_status'] ) ? 'publish' : $project_data['post_status'];
+        $project_data['progress_status'] = !isset( $project_data['progress_status'] ) ? 'scheduled' : $project_data['progress_status'];
+        $project_data['privacy_status'] = !isset( $project_data['privacy_status'] ) ? 'private' : $project_data['privacy_status'];
 
         $project_class = new Managx_Admin_Projects();
 
@@ -71,7 +73,7 @@ class Managx_Admin_Ajax_Handler {
         $status = $_POST['status'];
 
         $class = new Managx_Admin_Projects();
-        $result = $class->update_projct( $id, array( 'status' => $status ), array( '%s' ) );
+        $result = $class->update_project( $id, array( 'post_status' => $status ), array( '%s' ) );
 
         if ( ! $result ) {
             wp_send_json_error();
