@@ -57,22 +57,20 @@ import UsersList from './components/users';
 Vue.component('users-list', UsersList);
 
 const routes = [
-    { path: '/', redirect: '/projects' },
-    { path: '/projects', component: ProjectsRoot },
-    { path: '/projects/create', component: ProjectForm },
-    { path: '/projects/:id', redirect: '/projects/:id/details' },
-    { path: '/projects/:id/details', component: SingleProject },
-    { path: '/projects/:id/tasks', component: SingleProjectTasks },
-    { path: '/projects/:id/lists', component: SingleProjectLists },
-    { path: '/projects/:id/lists/create', component: ListForm },
+    {path: '/', redirect: '/projects'},
+    {path: '/projects', component: ProjectsRoot},
+    {path: '/projects/create', component: ProjectForm},
+    {path: '/projects/:id', redirect: '/projects/:id/details'},
+    {path: '/projects/:id/details', component: SingleProject},
+    {path: '/projects/:id/tasks', component: SingleProjectTasks},
+    {path: '/projects/:id/lists', component: SingleProjectLists},
+    {path: '/projects/:id/lists/create', component: ListForm},
     //task
-    { path: '/projects/:id/lists/:listId/tasks', component: SingleList },
-    { path: '/projects/:id/lists/:listId/tasks/create', component: TaskForm },
-    { path: '/projects/:id/lists/:listId/tasks/:taskId', component: SingleTask },
+    {path: '/projects/:id/lists/:listId/tasks', component: SingleList},
+    {path: '/projects/:id/lists/:listId/tasks/create', component: TaskForm},
+    {path: '/projects/:id/lists/:listId/tasks/:taskId', component: SingleTask},
 
-
-    { path: '/projects/:id/settings', component: Settings },
-
+    {path: '/projects/:id/settings', component: Settings},
 ];
 
 const router = new VueRouter({
@@ -84,12 +82,12 @@ var managxApp = new Vue({
     store,
     router,
     el: '#managx-app',
-    data() {
+    data () {
         return {
             msg: 'Hello Managx!'
-        }
+        };
     },
-    created() {
+    created () {
     },
     methods: {
     }

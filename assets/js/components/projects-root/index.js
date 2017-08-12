@@ -4,7 +4,7 @@ export default {
         return {
             sortKey: 'dd',
             reverse: false
-        }
+        };
     },
     created () {
         this.fetchData();
@@ -24,7 +24,7 @@ export default {
         getProjects (limit, offset, status) {
             this.$store.dispatch('getProjects', {limit, offset, status});
         },
-        sortBy(sortKey) {
+        sortBy (sortKey) {
             this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
 
             this.sortKey = sortKey;
@@ -37,4 +37,4 @@ export default {
             return this.$store.getters.projects;
         }
     }
-}
+};

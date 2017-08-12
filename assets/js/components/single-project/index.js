@@ -3,7 +3,7 @@ export default {
     data () {
         return {
             loading: false
-        }
+        };
     },
     created () {
         this.fetchData();
@@ -24,4 +24,4 @@ export default {
             return this.$store.getters.project;
         }
     }
-}
+};

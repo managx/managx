@@ -2,8 +2,8 @@ export default {
     template: '#tmpl-managx-single-task',
     data () {
         return {
-            listId : this.$route.params.listId
-        }
+            listId: this.$route.params.listId
+        };
     },
     created () {
         this.fetchData();
@@ -33,4 +33,4 @@ export default {
             return this.$store.getters.task;
         }
     }
-}
+};

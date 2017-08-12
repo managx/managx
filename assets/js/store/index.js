@@ -46,11 +46,11 @@ export default new Vuex.Store({
         createProject (state, {project}) {
             state.projects.push(project);
         },
-        trashProject (state, {project,index}) {
-            state.projects.splice(index,1);
+        trashProject (state, {project, index}) {
+            state.projects.splice(index, 1);
         },
-        deleteProject (state, {project,index}) {
-            state.projects.splice(index,1);
+        deleteProject (state, {project, index}) {
+            state.projects.splice(index, 1);
         },
         //list
         getList (state, {list}) {
@@ -64,7 +64,6 @@ export default new Vuex.Store({
         },
         getTasks (state, {tasks}) {
             state.tasks = tasks;
-            console.log(tasks);
         },
         getTask (state, {task}) {
             state.task = task;
@@ -94,11 +93,10 @@ export default new Vuex.Store({
                 'action': 'get_projects',
                 'limit': limit,
                 'offset': offset,
-                'status' : status
+                'status': status
             };
 
             jQuery.get(ajaxurl, data, function (response) {
-                console.log(response);
                 if (response.success) {
 
                     context.commit('getProjects', {projects: response.data});
@@ -107,49 +105,47 @@ export default new Vuex.Store({
                 }
             });
         },
-        createProject (context, {formSelector,callback}) {
+        createProject (context, {formSelector, callback}) {
             var data = {
                 'action': 'create_project',
                 'formData': jQuery(formSelector).serialize(),
             };
 
             jQuery.post(ajaxurl, data, function (response) {
-                console.log(response);
                 if (response.success) {
-                    if( typeof callback !== 'undefined' ) {
+                    if (typeof callback !== 'undefined') {
                         callback();
                     }
                 }
             });
         },
-        changeProjectStatus (context, {project,index,status}) {
+        changeProjectStatus (context, {project, index, status}) {
             var data = {
                 'action': 'change_project_status',
-                'id' : project.id,
-                'status' : status
+                'id': project.id,
+                'status': status
             };
 
             jQuery.post(ajaxurl, data, function (response) {
-                console.log(response);
                 if (response.success) {
                     context.commit('trashProject', {project: project, index: index});
                 }
             });
         },
-        deleteProject (context, {project,index}) {
+        deleteProject (context, {project, index}) {
             var data = {
                 'action': 'delete_project',
-                'id' : project.id,
+                'id': project.id,
             };
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    context.commit('deleteProject', {project: project,index : index});
+                    context.commit('deleteProject', {project: project, index: index});
                 }
             });
         },
         //list
-        createList (context, {formSelector,callback}) {
+        createList (context, {formSelector, callback}) {
             var data = {
                 'action': 'create_list',
                 'formData': jQuery(formSelector).serialize(),
@@ -157,7 +153,7 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    if( typeof callback !== 'undefined' ) {
+                    if (typeof callback !== 'undefined') {
                         callback();
                     }
                 }
@@ -172,7 +168,6 @@ export default new Vuex.Store({
             };
 
             jQuery.get(ajaxurl, data, function (response) {
-                console.log(response);
                 if (response.success) {
                     context.commit('getLists', {lists: response.data});
                 }
@@ -212,7 +207,6 @@ export default new Vuex.Store({
             };
 
             jQuery.get(ajaxurl, data, function (response) {
-                console.log(response);
                 if (response.success) {
                     context.commit('getTask', {task: response.data});
                 } else {
@@ -220,7 +214,7 @@ export default new Vuex.Store({
                 }
             });
         },
-        createTask (context, {formSelector,callback}) {
+        createTask (context, {formSelector, callback}) {
             var data = {
                 'action': 'create_task',
                 'formData': jQuery(formSelector).serialize(),
@@ -228,7 +222,7 @@ export default new Vuex.Store({
 
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
-                    if( typeof callback !== 'undefined' ) {
+                    if (typeof callback !== 'undefined') {
                         callback();
                     }
                 }

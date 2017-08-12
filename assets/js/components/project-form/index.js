@@ -1,4 +1,3 @@
-var _this = '';
 export default {
     template: '#tmpl-managx-project-form',
     data () {
@@ -8,23 +7,24 @@ export default {
                 name: '',
                 description: '',
                 user: '',
-                post_status : 'publish',
-                progress_status : 'scheduled',
-                privacy_status : 'public'
+                post_status: 'publish',
+                progress_status: 'scheduled',
+                privacy_status: 'public'
             },
-        }
+        };
     },
     created () {
-      _this = this;
     },
     methods: {
         create () {
-            this.$store.dispatch('createProject', {formSelector: '#create-project-form', callback : function(){
-                _this.$router.push('/');
+            var self = this;
+
+            this.$store.dispatch('createProject', {formSelector: '#create-project-form', callback: function () {
+                self.$router.push('/');
             }});
         },
         cancel () {
             this.$router.push('/');
         }
     },
-}
+};

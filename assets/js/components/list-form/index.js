@@ -1,4 +1,3 @@
-var _this = '';
 export default {
     template: '#tmpl-managx-list-form',
     data () {
@@ -8,21 +7,22 @@ export default {
                 name: '',
                 description: '',
                 user: '',
-                project_id : this.$route.params.id
-            },
-        }
+                project_id: this.$route.params.id
+            }
+        };
     },
     created () {
-        _this = this;
     },
     methods: {
         create () {
-            this.$store.dispatch('createList', {formSelector: '#create-list-form', callback : function () {
-                _this.$router.push('/projects/'+ _this.$route.params.id +'/lists');
+            var self = this;
+
+            this.$store.dispatch('createList', {formSelector: '#create-list-form', callback: function () {
+                self.$router.push('/projects/'+ self.$route.params.id +'/lists');
             }});
         },
         cancel () {
             this.$router.push('/projects/'+ this.$route.params.id +'/lists');
         }
     },
-}
+};

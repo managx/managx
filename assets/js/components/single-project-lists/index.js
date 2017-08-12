@@ -2,8 +2,8 @@ export default {
     template: '#tmpl-managx-single-project-lists',
     data () {
         return {
-            viewType : 'grid', //other values : list
-        }
+            viewType: 'grid', //other values : list
+        };
     },
     created () {
         this.fetchData();
@@ -26,4 +26,4 @@ export default {
             return this.$store.getters.lists;
         }
     }
-}
+};
