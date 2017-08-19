@@ -28,13 +28,19 @@
                             <div class="col-sm-12 mb20 bg-white pt30 pb30 pr30 pl30 expense_container">
                                 <div class="task_description mb30 pb35">
                                     <div class="oh mb30">
-                                        <h3 class="pull-left">Photoshoot of Maria Noor</h3>
-                                        <div class="pull-right">
-                                            <a href="">Edit Description</a>
+                                        <h3 class="pull-left">{{ project.name }}</h3>
+                                        <div class="pull-right" v-if="edit_description == false">
+                                            <a href="javascript:" @click="edit_description = true">Edit Description</a>
                                         </div>
                                     </div>
-                                    <div>
-                                        <p>This is the simple project brief. You can add it while creating the task, you may add this later. You may not give it, you may do some may may, ma mah, blah blah, blah. No more lorem ipsum. Oka, bye, tata. Some more line. This is the simple project brief. You can add it while creating the task, you may add this later. You may not give it, you may do some may may, ma mah, blah blah, blah. No more lorem ipsum. Oka, bye, tata. Some more line.This is the simple project brief. You can add it while creating the task. </p>
+                                    <div v-if="edit_description == false">
+                                        {{ project.description }}
+                                    </div>
+                                    <div v-if="edit_description == true">
+                                        <form id="edit-project-form">
+                                            <?php wp_editor('{{ project.description }}','description'); ?>
+                                            <input type="button" class="btn btn-primary mt10" value="<?php _e( 'Edit', 'managx' ); ?>" @click.prevent="edit" />
+                                        </form>
                                     </div>
                                 </div>
                             </div>

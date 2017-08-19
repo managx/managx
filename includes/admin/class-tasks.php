@@ -90,8 +90,19 @@ class Managx_Admin_Tasks {
      *
      * @return true on success false on failure
      */
-    function update_task( $task_id, $data ) {
-        
+    function update_task( $task_id, $data, $format = array() ) {
+        global $wpdb;
+        $table   = $wpdb->prefix . 'managx_tasks';
+
+        $result = $wpdb->update(
+            $table,
+            $data,
+            array( 'id' => $task_id ),
+            $format,
+            array( '%d' )
+        );
+
+        return $result;
     }
 
     /**

@@ -8,6 +8,8 @@ class Managx_Admin_Ajax_Handler {
         add_action( 'wp_ajax_get_projects', array( $this, 'get_projects' ) );
         add_action( 'wp_ajax_change_project_status', array( $this, 'change_project_status' ) );
         add_action( 'wp_ajax_delete_project', array( $this, 'delete_project' ) );
+        add_action( 'wp_ajax_edit_project', array( $this, 'edit_project' ) );
+
         //lists
         add_action( 'wp_ajax_get_lists', array( $this, 'get_lists' ) );
         add_action( 'wp_ajax_get_list', array( $this, 'get_list' ) );
@@ -17,6 +19,7 @@ class Managx_Admin_Ajax_Handler {
         add_action( 'wp_ajax_get_tasks', array( $this, 'get_tasks' ) );
         add_action( 'wp_ajax_get_task', array( $this, 'get_task' ) );
         add_action( 'wp_ajax_create_task', array( $this, 'create_task' ) );
+        add_action( 'wp_ajax_edit_task', array( $this, 'edit_task' ) );
     }
 
     public function get_project() {
@@ -65,6 +68,27 @@ class Managx_Admin_Ajax_Handler {
         }
 
         wp_send_json_success( $project );
+    }
+
+    public function edit_project() {
+        $cuid         = wp_get_current_user()->ID;
+        $project_id = $_POST['project_id'];
+
+        $project_data = array();
+        parse_str( $_POST['formData'], $project_data );
+
+        $project_class = new Managx_Admin_Projects();
+
+        $project_id = $project_class->update_project( $project_id, $project_data );
+
+        if ( ! $project_id ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( array(
+            'id' => $project_id,
+            'project_data' => $project_data
+        ));
     }
 
     public function change_project_status() {
@@ -198,6 +222,27 @@ class Managx_Admin_Ajax_Handler {
         }
 
         wp_send_json_success( $task );
+    }
+
+    public function edit_task() {
+        $cuid         = wp_get_current_user()->ID;
+        $task_id = $_POST['task_id'];
+        $task_data = array();
+
+        parse_str( $_POST['formData'], $task_data );
+
+        $task_class = new Managx_Admin_Tasks();
+
+        $task_id = $task_class->update_task( $task_id, $task_data );
+
+        if ( ! $task_id ) {
+            wp_send_json_error();
+        }
+
+        wp_send_json_success( array(
+            'id' => $task_id,
+            'task_data' => $task_data
+        ) );
     }
 
 }

@@ -1,11 +1,14 @@
+var _this;
 export default {
     template: '#tmpl-managx-single-task',
     data () {
         return {
-            listId: this.$route.params.listId
+            listId: this.$route.params.listId,
+            edit_description : false
         };
     },
     created () {
+        _this = this;
         this.fetchData();
     },
     watch: {
@@ -20,6 +23,20 @@ export default {
 
             //task
             this.$store.dispatch('getTask', {taskId: this.$route.params.taskId});
+        },
+        edit () {
+            var data = {
+                'action': 'edit_task',
+                'formData': jQuery('#edit-task-form').serialize(),
+                'task_id' : this.task.id
+            };
+
+            jQuery.post(ajaxurl, data, function (response) {
+                if (response.success) {
+                    _this.task.description = response.data.task_data.description;
+                    _this.edit_description = false;
+                }
+            });
         }
     },
     computed: {

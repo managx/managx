@@ -1,6 +1,5 @@
 <script type="text/x-template" id="tmpl-managx-single-task">
     <div>
-        {{ task | json }}
         <div class="container-fluid mt20">
             <div class="row mr0 ml0">
                 <div class="col-sm-12 horizontal-nav bg-white">
@@ -120,12 +119,18 @@
                                     <div class="task_description mb30 pb35">
                                         <div class="oh mb30">
                                             <h3 class="pull-left">{{ task.name }}</h3>
-                                            <div class="pull-right">
-                                                <a href="">Edit Task Description</a>
+                                            <div class="pull-right" v-if="edit_description == false">
+                                                <a href="javascript:" @click="edit_description = true"><?php _e( 'Edit Task Description', 'managx' ); ?></a>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div v-if="edit_description == false">
                                             {{ task.description }}
+                                        </div>
+                                        <div v-if="edit_description == true">
+                                            <form id="edit-task-form">
+                                                <?php wp_editor('{{ task.description }}','description'); ?>
+                                                <input type="button" class="btn btn-primary mt10" value="<?php _e( 'Edit', 'managx' ); ?>" @click.prevent="edit" />
+                                            </form>
                                         </div>
                                     </div>
                                     <!--task attachments-->
